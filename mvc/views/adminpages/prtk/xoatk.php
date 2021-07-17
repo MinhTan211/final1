@@ -82,14 +82,14 @@ The above copyright notice and this permission notice shall be included in all c
                                     $chitiet = $this->model("AcountModel");
                                     $rs = $chitiet->ChitietTK($id);
                                     $row =  mysqli_fetch_assoc($rs);
-                                    if($_SERVER["REQUEST_METHOD"] == "POST"){
+                                    
                                         $rd = $chitiet->XoaTK($id)??null;
                                         if($row["Role"]==0)
                                             $Del = $this->model("CustomerModel")->XoaKH($row["Username"]);
                                         echo "<script type='text/javascript'>
                                             window.location = 'http://localhost/Final/Admin/listaccoun'
                                             </script>";
-                                    }
+                                    
                                 ?>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
