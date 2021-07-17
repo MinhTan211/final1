@@ -55,7 +55,14 @@ The above copyright notice and this permission notice shall be included in all c
                                 if(isset($_POST["Username"])) { $Username = $_POST['Username']; }
                                 if(isset($_POST["Password"])) { $Password = $_POST['Password']; }
                                 if(isset($_POST["Role"])) { $Role = $_POST['Role']; }
-                                $themtk = $this->model("AcountModel");
+                                if($Username == "" || $Password == ""){
+                                    echo "<script type = 'text/javascript'>
+                                    let isExecuted = confirm('Username và Password Không được để rỗng?');
+                                    console.log(isExecuted);
+                                    </script>
+                                    ";
+                                }else{
+                                    $themtk = $this->model("AcountModel");
                                 $CheckTK = $themtk->CheckTK($Username);
                                 if($CheckTK == 0){
                                     $data[$themtk->ThemTK($Username,$Password, $Role)]??null;
@@ -68,9 +75,13 @@ The above copyright notice and this permission notice shall be included in all c
                                         </script>";
                                 }
                                 else{
-                                    
+                                    echo "<script type = 'text/javascript'>
+                                    let isExecuted = confirm('Tài Khoản Đã Tồn Tại Xin Nhập Lại?');
+                                    console.log(isExecuted);
+                                    </script>
+                                    ";
                                 }
-                                
+                                } 
                             }
                             ?>
                                 <form style="font-family: Courier New;" method="POST">
