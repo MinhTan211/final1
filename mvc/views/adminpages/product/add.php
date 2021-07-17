@@ -69,6 +69,19 @@ The above copyright notice and this permission notice shall be included in all c
                                                         <span class="field__label">Mô Tả</span>
                                                     </span>
                                                 </label>
+                                                <label class="field field_v1" style="margin-bottom: 40px;">
+                                                    <select name="Role" class="field__input">
+                                                        <option>
+                                                            Loại Sản Phẩm
+                                                        </option>
+                                                        <option value="1">
+                                                            VietNamFood
+                                                        </option>
+                                                        <option value="0">
+                                                            FastFoodLT
+                                                        </option>
+                                                    </select>
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
