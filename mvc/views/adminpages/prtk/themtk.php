@@ -56,14 +56,21 @@ The above copyright notice and this permission notice shall be included in all c
                                 if(isset($_POST["Password"])) { $Password = $_POST['Password']; }
                                 if(isset($_POST["Role"])) { $Role = $_POST['Role']; }
                                 $themtk = $this->model("AcountModel");
-                                $data[$themtk->ThemTK($Username,$Password, $Role)]??null;
-                                if($Role == 0){
-                                    $themkh = $this->model("CustomerModel");
-                                    $datakh[$themkh->ThemKH($Username)];
+                                $CheckTK = $themtk->CheckTK($Username);
+                                if($CheckTK == 0){
+                                    $data[$themtk->ThemTK($Username,$Password, $Role)]??null;
+                                    if($Role == 0){
+                                        $themkh = $this->model("CustomerModel");
+                                        $datakh[$themkh->ThemKH($Username)];
+                                    }
+                                    echo "<script type='text/javascript'>
+                                        window.location = 'http://localhost/Final/Admin/listaccoun'
+                                        </script>";
                                 }
-                                echo "<script type='text/javascript'>
-                                    window.location = 'http://localhost/Final/Admin/listaccoun'
-                                      </script>";
+                                else{
+                                    
+                                }
+                                
                             }
                             ?>
                                 <form style="font-family: Courier New;" method="POST">

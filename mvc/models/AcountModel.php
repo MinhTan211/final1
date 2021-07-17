@@ -5,6 +5,10 @@ class AcountModel extends DataBase{
         $qr = "SELECT * FROM account";
         return mysqli_query($this->con,$qr);
     }
+    public function CheckTK($Username){
+        $qr = "SELECT * FROM account WHERE Username = '$Username'";
+        return mysqli_num_rows(mysqli_query($this->con,$qr));
+    }
 
     public function ThemTK($Username, $Password, $Role){
         $qr = "INSERT INTO account (Username, Password, Role) VALUES ('$Username','$Password','$Role')";
