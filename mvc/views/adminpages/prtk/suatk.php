@@ -83,7 +83,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-lg-6 col-md-6">
                                             <div class="page">
                                                 <label class="field field_v1">
-                                                    <input name="Username" class="field__input" placeholder="Xin mời nhập..." value="<?php echo $row ["Username"]?>">
+                                                    <input name="Username" class="field__input" readonly="readonly" placeholder="Xin mời nhập..." value="<?php echo $row ["Username"]?>">
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Username...</span>
                                                     </span>
