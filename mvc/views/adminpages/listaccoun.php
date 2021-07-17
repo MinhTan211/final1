@@ -36,13 +36,15 @@ The above copyright notice and this permission notice shall be included in all c
     <script LANGUAGE="JavaScript">
     <!--
     function confirmSubmit() {
-        var agree = confirm("Bạn có chắc chắn muốn xóa ");
+        var agree = confirm("Bạn có chắc chắn xóa?");
         if (agree)
             return true;
         else
             return false;
     }
+    // 
     -->
+    </script>
     </script>
     <div class="wrapper ">
         <div class="sidebar" style="background-color: #f5e0c2;">
@@ -149,6 +151,17 @@ The above copyright notice and this permission notice shall be included in all c
                                             </thead>
                                             <tbody>
                                                 <?php
+                                                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                                                    $User = $_POST["User"];
+                                                    $chitiet = $this->model("AcountModel");
+                                                    $rd = $chitiet->XoaTK($User)??null;
+                                                    $Check = $this->model("CustomerModel")->CheckKH($User);
+                                                    if($Check!=0)
+                                                        $Del = $this->model("CustomerModel")->XoaKH($User);
+                                                    echo "<script type='text/javascript'>
+                                                        window.location = 'http://localhost/Final/Admin/listaccoun'
+                                                        </script>";
+                                                }
                                                 while ($row =  mysqli_fetch_array($data["listaccount"])) {
                                                     if($row["Role"] == 1)
                                                         $Vt = 'Quản trị viên';
@@ -168,8 +181,9 @@ The above copyright notice and this permission notice shall be included in all c
                                                         <td style='text-align: center; width: 200px;'>
                                                         <form method='POST' action=''
                                                         onSubmit='confirmSubmit()'>
-                                                            <label name = 'User' hide/>
-                                                            <button type='submit' class='snip0059'><span class='material-icons' style='font-size: 15px;'>
+                                                            <label/>
+                                                            <input type = 'hidden' name = 'User' value = '$row[0]'/>
+                                                            <button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                             delete
                                                             </span></button>
                                                         </form>
@@ -178,15 +192,6 @@ The above copyright notice and this permission notice shall be included in all c
                                                             </span></button></a>
                                                         </td>
                                                     </tr> ";
-                                                    if($_SERVER["REQUEST_METHOD"] == "POST"){
-                                                        $chitiet = $this->model("AcountModel");
-                                                        $rd = $chitiet->XoaTK($id)??null;
-                                                        if($row["Role"]==0)
-                                                            $Del = $this->model("CustomerModel")->XoaKH($id);
-                                                        echo "<script type='text/javascript'>
-                                                            window.location = 'http://localhost/Final/Admin/listaccoun'
-                                                            </script>";
-                                                    }
                                                 }
                                                 ?>
                                             </tbody>

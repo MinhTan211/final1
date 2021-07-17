@@ -21,5 +21,9 @@ class CustomerModel extends DataBase{
         $qr = "UPDATE informationcustomer SET TenKH = '$TenKH', Address = '$Address', Email = '$Email', Numberphone = '$Numberphone', Gender = '$Gender', Birthday = '$Birthday' WHERE Username = '$Username'";
         return mysqli_query($this->con,$qr);
     }
+    public function CheckKH($Username){
+        $qr = "SELECT * FROM informationcustomer WHERE Username = '$Username'";
+        return mysqli_num_rows(mysqli_query($this->con,$qr));
+    }
 }
 ?>

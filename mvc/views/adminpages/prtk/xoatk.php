@@ -132,7 +132,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                     </div>
-                                    <button onclick="ConDel()" class="btn"
+                                    <button class="btn"
                                         style="margin-right: -130px; margin-bottom: -30px; width: 250px;">
                                         <span class="btn-label">Xóa Tài Khoản</span>
                                     </button>
