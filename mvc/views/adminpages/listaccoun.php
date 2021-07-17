@@ -36,7 +36,7 @@ The above copyright notice and this permission notice shall be included in all c
     <script LANGUAGE="JavaScript">
     <!--
     function confirmSubmit() {
-        var agree = confirm("Bạn có chắc chắn muốn xóa?");
+        var agree = confirm("Bạn có chắc chắn muốn xóa ");
         if (agree)
             return true;
         else
@@ -165,15 +165,27 @@ The above copyright notice and this permission notice shall be included in all c
                                                          <td style='width: 200px;text-align: center;'>";
                                                     echo $Vt .
                                                         "</td>
-                                                         <td style='text-align: center; width: 200px;'>
-                                                        <button onclick = 'confirmSubmit()' class='snip0059'><span class='material-icons' style='font-size: 15px;'>
+                                                        <td style='text-align: center; width: 200px;'>
+                                                        <form method='POST' action=''
+                                                        onSubmit='confirmSubmit()'>
+                                                            <button type='submit' class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                             delete
                                                             </span></button>
+                                                        </form>
                                                         <a href ='./suatk?id=";echo $row[0]."'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                         border_color
                                                             </span></button></a>
                                                         </td>
                                                     </tr> ";
+                                                    if($_SERVER["REQUEST_METHOD"] == "POST"){
+                                                        $chitiet = $this->model("AcountModel");
+                                                        $rd = $chitiet->XoaTK($id)??null;
+                                                        if($row["Role"]==0)
+                                                            $Del = $this->model("CustomerModel")->XoaKH($id);
+                                                        echo "<script type='text/javascript'>
+                                                            window.location = 'http://localhost/Final/Admin/listaccoun'
+                                                            </script>";
+                                                    }
                                                 }
                                                 ?>
                                             </tbody>
