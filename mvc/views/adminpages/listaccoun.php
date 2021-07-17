@@ -168,6 +168,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                         <td style='text-align: center; width: 200px;'>
                                                         <form method='POST' action=''
                                                         onSubmit='confirmSubmit()'>
+                                                            <label name = 'User' hide/>
                                                             <button type='submit' class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                             delete
                                                             </span></button>
