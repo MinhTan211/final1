@@ -1,0 +1,353 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,800);
+h1 {
+    font-size: 2em;
+    padding: 20px 0;
+}
+
+p {
+    font-size: .75em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 20px 0;
+}
+
+button:hover {
+    cursor: pointer
+}
+
+button {
+    color: white;
+    margin-top: 30px;
+    background: transparent;
+    outline: none;
+    position: relative;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 15px 50px;
+    overflow: hidden;
+}
+
+
+/*button:before (attr data-hover)*/
+
+button:hover:before {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+button:before {
+    content: attr(data-hover);
+    position: absolute;
+    top: 1.1em;
+    left: 0;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    font-size: .8em;
+    opacity: 0;
+    transform: translate(-100%, 0);
+    transition: all .3s ease-in-out;
+}
+
+
+/*button div (button text before hover)*/
+
+button:hover div {
+    opacity: 0;
+    transform: translate(100%, 0)
+}
+
+button div {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    font-size: .8em;
+    transition: all .3s ease-in-out;
+}
+
+.btn:hover {
+    cursor: pointer
+}
+
+.btn {
+    color: rgb(0, 0, 0);
+    background: transparent;
+    outline: none;
+    position: relative;
+    border: 2px solid rgb(10, 10, 10);
+    padding: 15px 50px;
+    overflow: hidden;
+}
+
+
+/*button:before (attr data-hover)*/
+
+.btn:hover:before {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.btn:before {
+    content: attr(data-hover);
+    position: absolute;
+    top: 1.1em;
+    left: 0;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    font-size: .8em;
+    opacity: 0;
+    transform: translate(-100%, 0);
+    transition: all .3s ease-in-out;
+}
+
+
+/*button div (button text before hover)*/
+
+.btn:hover div {
+    opacity: 0;
+    transform: translate(100%, 0)
+}
+
+.btn div {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    font-size: .8em;
+    transition: all .3s ease-in-out;
+}
+
+
+/* Thanh nav*/
+
+#fixNav {
+    width: 100%;
+    height: 35px;
+    background-color: #0082bb;
+    display: block;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    /*Đổ bóng cho menu*/
+    position: fixed;
+    /*Cho menu cố định 1 vị trí với top và left*/
+    top: 0;
+    /*Nằm trên cùng*/
+    left: 0;
+    /*Nằm sát bên trái*/
+    z-index: 100000;
+    /*Hiển thị lớp trên cùng*/
+}
+
+#fixNav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#fixNav ul li {
+    list-style: none inside;
+    width: auto;
+    float: left;
+    line-height: 35px;
+    /*Cho text canh giữa menu*/
+    color: #fff;
+    padding: 0;
+    margin-right: 10px;
+    position: relative;
+}
+
+#fixNav ul li a {
+    text-transform: uppercase;
+    white-space: nowrap;
+    /*Cho chữ trong menu không bị wrap*/
+    padding: 0 10px;
+    color: #fff;
+    display: block;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+
+.vertical-menu {
+    background: transparent;
+    width: 300px;
+    /* Set a width if you like */
+}
+
+.vertical-menu a {
+    background-color: transparent;
+    /* Grey background color */
+    color: black;
+    /* Black text color */
+    display: block;
+    /* Make the links appear below each other */
+    padding: 12px;
+    /* Add some padding */
+    text-decoration: none;
+    /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+    /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+    background-color: #ec9d0a;
+    box-shadow: 10px 10px 10px #fcc77b;
+    ;
+    /* Add a green color to the "active/current" link */
+    color: white;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Exo+2:400,200italic);
+.btn2 {
+    background: #ec9d0a;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 13px;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1em;
+    font-weight: 300;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    padding-left: 10px;
+    height: 40px;
+    padding-top: 8px;
+    border: 1px solid #363858;
+    overflow: hidden;
+    display: inline-block;
+    transition: all 0.5s;
+    box-shadow: 0px 3px 0px #363858;
+    border-radius: 4px;
+}
+
+.btn2:hover,
+.btn2:active {
+    text-decoration: none;
+    color: rgb(24, 22, 22);
+    border-color: #363858;
+    background: #363858;
+    opacity: 0.4;
+    box-shadow: 0 0 0 #363858;
+}
+
+.btn-label {
+    display: inline-block;
+    position: relative;
+    padding-right: 0;
+    transition: padding-right 0.5s;
+    color: #363858;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 200;
+}
+
+.btn-label:after {
+    content: "";
+    position: absolute;
+    right: -50px;
+    opacity: 0;
+    top: 22%;
+    width: 10px;
+    height: 10px;
+    margin-right: -10px;
+    background: rgba(0, 0, 0, 0);
+    border: 3px solid rgb(20, 19, 19);
+    border-top: none;
+    border-right: none;
+    transition: opacity 0.5s, top 0.5s, right 0.5s;
+    transform: rotate(225deg);
+}
+
+.btn2:hover .btn-label,
+.btn2:active .btn-label {
+    padding-right: 30px;
+    color: #131212;
+}
+
+.btn2:hover .btn-label:after,
+.btn2:active .btn-label:after {
+    transition: opacity 0.5s, top 0.5s, right 0.5s;
+    opacity: 1;
+    right: 10px;
+    top: 22%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Exo+2:400,200italic);
+.btn3 {
+    background: transparent;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1em;
+    font-weight: 300;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 150px;
+    height: 40px;
+    padding-top: 15px;
+    border: 1px solid #363858;
+    overflow: hidden;
+    display: inline-block;
+    transition: all 0.5s;
+    box-shadow: 0px 3px 0px #363858;
+    border-radius: 4px;
+}
+
+.btn3:hover,
+.btn3:active {
+    text-decoration: none;
+    color: #363858;
+    border-color: #363858;
+    background: #363858;
+    box-shadow: 0 0 0 #363858;
+}
+
+.btn-label {
+    display: inline-block;
+    position: relative;
+    padding-right: 0;
+    transition: padding-right 0.5s;
+    color: #363858;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 200;
+}
+
+.btn-label:after {
+    content: "";
+    position: absolute;
+    right: -50px;
+    opacity: 0;
+    top: 22%;
+    width: 10px;
+    height: 10px;
+    margin-right: -10px;
+    background: rgba(0, 0, 0, 0);
+    border: 3px solid #363858;
+    ;
+    border-top: none;
+    border-right: none;
+    transition: opacity 0.5s, top 0.5s, right 0.5s;
+    transform: rotate(225deg);
+}
+
+.btn3:hover .btn-label,
+.btn3:active .btn-label {
+    padding-right: 30px;
+    color: #363858;
+}
+
+.btn3:hover .btn-label:after,
+.btn3:active .btn-label:after {
+    transition: opacity 0.5s, top 0.5s, right 0.5s;
+    opacity: 1;
+    right: 10px;
+    top: 22%;
+}

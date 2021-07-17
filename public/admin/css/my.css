@@ -1,0 +1,170 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2:400,200italic);
+.btn {
+    background: transparent;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 10px;
+    line-height: 1em;
+    font-weight: 300;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 200px;
+    height: 40px;
+    padding-top: 15px;
+    border: 1px solid #363858;
+    overflow: hidden;
+    display: inline-block;
+    transition: all 0.5s;
+    box-shadow: 0px 3px 0px #363858;
+    border-radius: 4px;
+}
+
+.btn:hover,
+.btn:active {
+    text-decoration: none;
+    color: #fff;
+    border-color: #363858;
+    background: #363858;
+    box-shadow: 0 0 0 #363858;
+}
+
+.btn-label {
+    display: inline-block;
+    position: relative;
+    padding-right: 0;
+    transition: padding-right 0.5s;
+    color: #363858;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 200;
+}
+
+.btn-label:after {
+    content: "";
+    position: absolute;
+    right: -50px;
+    opacity: 0;
+    top: 22%;
+    width: 10px;
+    height: 10px;
+    margin-right: -10px;
+    background: rgba(0, 0, 0, 0);
+    border: 3px solid #fff;
+    border-top: none;
+    border-right: none;
+    transition: opacity 0.5s, top 0.5s, right 0.5s;
+    transform: rotate(225deg);
+}
+
+.btn:hover .btn-label,
+.btn:active .btn-label {
+    padding-right: 30px;
+    color: #f5f1e7;
+}
+
+.btn:hover .btn-label:after,
+.btn:active .btn-label:after {
+    transition: opacity 0.5s, top 0.5s, right 0.5s;
+    opacity: 1;
+    right: 10px;
+    top: 22%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+button.snip0059 {
+    font-family: 'Raleway', Arial, sans-serif;
+    border: none;
+    background-color: #f5e0c2;
+    border-radius: 5px;
+    color: rgba(26, 24, 24, 0.7);
+    cursor: pointer;
+    padding: 8px 16px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 1em;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+button.snip0059:before {
+    content: '';
+    display: block;
+    border-radius: 3px;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 50%;
+    right: 50%;
+    background-color: #ffffff;
+    border-left: 2px solid rgba(255, 255, 255, 0.8);
+    border-right: 2px solid rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+}
+
+button.snip0059:hover,
+button.snip0059.hover {
+    color: #ffffff;
+    -webkit-animation: flashText 0.5s;
+    animation: flashText 0.5s;
+}
+
+button.snip0059:hover:before,
+button.snip0059.hover:before {
+    left: 12px;
+    right: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 0.8;
+}
+
+button.snip0059:active:before {
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+button.snip0059.blue {
+    background-color: #1e5d87;
+}
+
+button.snip0059.red {
+    background-color: #8e2a20;
+}
+
+button.snip0059.yellow {
+    background-color: #b66015;
+}
+
+@-webkit-keyframes flashText {
+    0% {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        color: transparent;
+    }
+    100% {
+        color: #fff;
+    }
+}
+
+@keyframes flashText {
+    0% {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        color: transparent;
+    }
+    100% {
+        color: #fff;
+    }
+}
