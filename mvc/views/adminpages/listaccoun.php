@@ -22,7 +22,8 @@ The above copyright notice and this permission notice shall be included in all c
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="../public/admin/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
@@ -32,6 +33,17 @@ The above copyright notice and this permission notice shall be included in all c
 </head>
 
 <body class="">
+    <script LANGUAGE="JavaScript">
+    <!--
+    function confirmSubmit() {
+        var agree = confirm("Bạn có chắc chắn muốn xóa?");
+        if (agree)
+            return true;
+        else
+            return false;
+    }
+    -->
+    </script>
     <div class="wrapper ">
         <div class="sidebar" style="background-color: #f5e0c2;">
             <!--
@@ -39,7 +51,9 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-            <div class="logo"><img src="../public/admin/img/logo1.png" style="width: 50px; height: 50px; margin-left: 50px;"><a href="http://www.creative-tim.com" style="font-size: x-large; color: rgb(51, 31, 1);">
+            <div class="logo"><img src="../public/admin/img/logo1.png"
+                    style="width: 50px; height: 50px; margin-left: 50px;"><a href="http://www.creative-tim.com"
+                    style="font-size: x-large; color: rgb(51, 31, 1);">
                     FF.LT
                 </a></div>
             <div class="sidebar-wrapper">
@@ -94,7 +108,9 @@ The above copyright notice and this permission notice shall be included in all c
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#" style="font-size: 35px; color: brown;font-weight: 300; padding-top: 30px; font-family: serif;">CHÀO MỪNG BẠN ĐẾN VỚI FF.LT</a>
+                        <a class="navbar-brand" href="#"
+                            style="font-size: 35px; color: brown;font-weight: 300; padding-top: 30px; font-family: serif;">CHÀO
+                            MỪNG BẠN ĐẾN VỚI FF.LT</a>
                     </div>
                 </div>
             </nav>
@@ -105,7 +121,9 @@ The above copyright notice and this permission notice shall be included in all c
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-primary" style="background: #f5e0c2;">
-                                    <h4 class="card-title" style="color: black; font-family:'Courier New', Courier, monospace;">DANH SÁCH TÀI KHOẢN</h4>
+                                    <h4 class="card-title"
+                                        style="color: black; font-family:'Courier New', Courier, monospace;">DANH SÁCH
+                                        TÀI KHOẢN</h4>
                                     <a href="./themtk" class="btn" style="margin-left: 970px;">
                                         <span class="btn-label">Tạo Thêm Tài Khoản</span>
                                     </a>
@@ -114,7 +132,8 @@ The above copyright notice and this permission notice shall be included in all c
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table">
-                                            <thead class=" text-primary" style="font-family:'Courier New', Courier, monospace;">
+                                            <thead class=" text-primary"
+                                                style="font-family:'Courier New', Courier, monospace;">
                                                 <th style="width: 200px; text-align: center;">
                                                     Username
                                                 </th>
@@ -147,9 +166,9 @@ The above copyright notice and this permission notice shall be included in all c
                                                     echo $Vt .
                                                         "</td>
                                                          <td style='text-align: center; width: 200px;'>
-                                                        <a href ='./xoatk?id=";echo $row[0]."'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
+                                                        <button onclick = 'confirmSubmit()' class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                             delete
-                                                            </span></button></a>
+                                                            </span></button>
                                                         <a href ='./suatk?id=";echo $row[0]."'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                         border_color
                                                             </span></button></a>
@@ -157,7 +176,6 @@ The above copyright notice and this permission notice shall be included in all c
                                                     </tr> ";
                                                 }
                                                 ?>
-                                               
                                             </tbody>
                                         </table>
                                     </div>
@@ -211,7 +229,8 @@ The above copyright notice and this permission notice shall be included in all c
                     </a>
                 </li>
                 <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
+                    <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank"
+                        class="btn btn-primary btn-block">Free Download</a>
                 </li>
                 <!-- <li class="header-title">Want more components?</li>
             <li class="button-container">
@@ -220,17 +239,22 @@ The above copyright notice and this permission notice shall be included in all c
                 </a>
             </li> -->
                 <li class="button-container">
-                    <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
+                    <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html"
+                        target="_blank" class="btn btn-default btn-block">
                         View Documentation
                     </a>
                 </li>
                 <li class="button-container github-star">
-                    <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+                    <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard"
+                        data-icon="octicon-star" data-size="large" data-show-count="true"
+                        aria-label="Star ntkme/github-buttons on GitHub">Star</a>
                 </li>
                 <li class="header-title">Thank you for 95 shares!</li>
                 <li class="button-container text-center">
-                    <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-                    <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+                    <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot;
+                        45</button>
+                    <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot;
+                        50</button>
                     <br>
                     <br>
                 </li>
@@ -281,183 +305,191 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="../public/admin/demo/demo.js"></script>
     <script>
-        $(document).ready(function() {
-            $().ready(function() {
-                $sidebar = $('.sidebar');
+    $(document).ready(function() {
+        $().ready(function() {
+            $sidebar = $('.sidebar');
 
-                $sidebar_img_container = $sidebar.find('.sidebar-background');
+            $sidebar_img_container = $sidebar.find('.sidebar-background');
 
-                $full_page = $('.full-page');
+            $full_page = $('.full-page');
 
-                $sidebar_responsive = $('body > .navbar-collapse');
+            $sidebar_responsive = $('body > .navbar-collapse');
 
-                window_width = $(window).width();
+            window_width = $(window).width();
 
-                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+            fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-                if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-                    if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-                        $('.fixed-plugin .dropdown').addClass('open');
-                    }
-
+            if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                    $('.fixed-plugin .dropdown').addClass('open');
                 }
 
-                $('.fixed-plugin a').click(function(event) {
-                    // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-                    if ($(this).hasClass('switch-trigger')) {
-                        if (event.stopPropagation) {
-                            event.stopPropagation();
-                        } else if (window.event) {
-                            window.event.cancelBubble = true;
-                        }
+            }
+
+            $('.fixed-plugin a').click(function(event) {
+                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                if ($(this).hasClass('switch-trigger')) {
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    } else if (window.event) {
+                        window.event.cancelBubble = true;
                     }
-                });
+                }
+            });
 
-                $('.fixed-plugin .active-color span').click(function() {
-                    $full_page_background = $('.full-page-background');
+            $('.fixed-plugin .active-color span').click(function() {
+                $full_page_background = $('.full-page-background');
 
-                    $(this).siblings().removeClass('active');
-                    $(this).addClass('active');
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
 
-                    var new_color = $(this).data('color');
+                var new_color = $(this).data('color');
 
-                    if ($sidebar.length != 0) {
-                        $sidebar.attr('data-color', new_color);
-                    }
+                if ($sidebar.length != 0) {
+                    $sidebar.attr('data-color', new_color);
+                }
 
-                    if ($full_page.length != 0) {
-                        $full_page.attr('filter-color', new_color);
-                    }
+                if ($full_page.length != 0) {
+                    $full_page.attr('filter-color', new_color);
+                }
 
-                    if ($sidebar_responsive.length != 0) {
-                        $sidebar_responsive.attr('data-color', new_color);
-                    }
-                });
+                if ($sidebar_responsive.length != 0) {
+                    $sidebar_responsive.attr('data-color', new_color);
+                }
+            });
 
-                $('.fixed-plugin .background-color .badge').click(function() {
-                    $(this).siblings().removeClass('active');
-                    $(this).addClass('active');
+            $('.fixed-plugin .background-color .badge').click(function() {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
 
-                    var new_color = $(this).data('background-color');
+                var new_color = $(this).data('background-color');
 
-                    if ($sidebar.length != 0) {
-                        $sidebar.attr('data-background-color', new_color);
-                    }
-                });
+                if ($sidebar.length != 0) {
+                    $sidebar.attr('data-background-color', new_color);
+                }
+            });
 
-                $('.fixed-plugin .img-holder').click(function() {
-                    $full_page_background = $('.full-page-background');
+            $('.fixed-plugin .img-holder').click(function() {
+                $full_page_background = $('.full-page-background');
 
-                    $(this).parent('li').siblings().removeClass('active');
-                    $(this).parent('li').addClass('active');
+                $(this).parent('li').siblings().removeClass('active');
+                $(this).parent('li').addClass('active');
 
 
-                    var new_image = $(this).find("img").attr('src');
+                var new_image = $(this).find("img").attr('src');
 
-                    if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                        $sidebar_img_container.fadeOut('fast', function() {
-                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                            $sidebar_img_container.fadeIn('fast');
-                        });
-                    }
+                if ($sidebar_img_container.length != 0 && $(
+                        '.switch-sidebar-image input:checked').length != 0) {
+                    $sidebar_img_container.fadeOut('fast', function() {
+                        $sidebar_img_container.css('background-image', 'url("' +
+                            new_image + '")');
+                        $sidebar_img_container.fadeIn('fast');
+                    });
+                }
 
-                    if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+                if ($full_page_background.length != 0 && $(
+                        '.switch-sidebar-image input:checked').length != 0) {
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                        'img').data('src');
 
-                        $full_page_background.fadeOut('fast', function() {
-                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                            $full_page_background.fadeIn('fast');
-                        });
-                    }
+                    $full_page_background.fadeOut('fast', function() {
+                        $full_page_background.css('background-image', 'url("' +
+                            new_image_full_page + '")');
+                        $full_page_background.fadeIn('fast');
+                    });
+                }
 
-                    if ($('.switch-sidebar-image input:checked').length == 0) {
-                        var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+                if ($('.switch-sidebar-image input:checked').length == 0) {
+                    var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr(
+                        'src');
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                        'img').data('src');
 
-                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                    }
+                    $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                    $full_page_background.css('background-image', 'url("' +
+                        new_image_full_page + '")');
+                }
 
-                    if ($sidebar_responsive.length != 0) {
-                        $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-                    }
-                });
+                if ($sidebar_responsive.length != 0) {
+                    $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                }
+            });
 
-                $('.switch-sidebar-image input').change(function() {
-                    $full_page_background = $('.full-page-background');
+            $('.switch-sidebar-image input').change(function() {
+                $full_page_background = $('.full-page-background');
 
-                    $input = $(this);
+                $input = $(this);
 
-                    if ($input.is(':checked')) {
-                        if ($sidebar_img_container.length != 0) {
-                            $sidebar_img_container.fadeIn('fast');
-                            $sidebar.attr('data-image', '#');
-                        }
-
-                        if ($full_page_background.length != 0) {
-                            $full_page_background.fadeIn('fast');
-                            $full_page.attr('data-image', '#');
-                        }
-
-                        background_image = true;
-                    } else {
-                        if ($sidebar_img_container.length != 0) {
-                            $sidebar.removeAttr('data-image');
-                            $sidebar_img_container.fadeOut('fast');
-                        }
-
-                        if ($full_page_background.length != 0) {
-                            $full_page.removeAttr('data-image', '#');
-                            $full_page_background.fadeOut('fast');
-                        }
-
-                        background_image = false;
-                    }
-                });
-
-                $('.switch-sidebar-mini input').change(function() {
-                    $body = $('body');
-
-                    $input = $(this);
-
-                    if (md.misc.sidebar_mini_active == true) {
-                        $('body').removeClass('sidebar-mini');
-                        md.misc.sidebar_mini_active = false;
-
-                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-                    } else {
-
-                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-                        setTimeout(function() {
-                            $('body').addClass('sidebar-mini');
-
-                            md.misc.sidebar_mini_active = true;
-                        }, 300);
+                if ($input.is(':checked')) {
+                    if ($sidebar_img_container.length != 0) {
+                        $sidebar_img_container.fadeIn('fast');
+                        $sidebar.attr('data-image', '#');
                     }
 
-                    // we simulate the window Resize so the charts will get updated in realtime.
-                    var simulateWindowResize = setInterval(function() {
-                        window.dispatchEvent(new Event('resize'));
-                    }, 180);
+                    if ($full_page_background.length != 0) {
+                        $full_page_background.fadeIn('fast');
+                        $full_page.attr('data-image', '#');
+                    }
 
-                    // we stop the simulation of Window Resize after the animations are completed
+                    background_image = true;
+                } else {
+                    if ($sidebar_img_container.length != 0) {
+                        $sidebar.removeAttr('data-image');
+                        $sidebar_img_container.fadeOut('fast');
+                    }
+
+                    if ($full_page_background.length != 0) {
+                        $full_page.removeAttr('data-image', '#');
+                        $full_page_background.fadeOut('fast');
+                    }
+
+                    background_image = false;
+                }
+            });
+
+            $('.switch-sidebar-mini input').change(function() {
+                $body = $('body');
+
+                $input = $(this);
+
+                if (md.misc.sidebar_mini_active == true) {
+                    $('body').removeClass('sidebar-mini');
+                    md.misc.sidebar_mini_active = false;
+
+                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                } else {
+
+                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
                     setTimeout(function() {
-                        clearInterval(simulateWindowResize);
-                    }, 1000);
+                        $('body').addClass('sidebar-mini');
 
-                });
+                        md.misc.sidebar_mini_active = true;
+                    }, 300);
+                }
+
+                // we simulate the window Resize so the charts will get updated in realtime.
+                var simulateWindowResize = setInterval(function() {
+                    window.dispatchEvent(new Event('resize'));
+                }, 180);
+
+                // we stop the simulation of Window Resize after the animations are completed
+                setTimeout(function() {
+                    clearInterval(simulateWindowResize);
+                }, 1000);
+
             });
         });
+    });
     </script>
     <script>
-        /* Demo purposes only */
-        $("button").mouseleave(
-            function() {
-                $(this).removeClass("hover");
-            }
-        );
+    /* Demo purposes only */
+    $("button").mouseleave(
+        function() {
+            $(this).removeClass("hover");
+        }
+    );
     </script>
 </body>
 
