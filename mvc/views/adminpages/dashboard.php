@@ -1,3 +1,6 @@
+<?php
+    include 'CheckRole.php';
+?>
 <!--
 =========================================================
 Material Dashboard - v2.1.2

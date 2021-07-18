@@ -99,13 +99,13 @@
 
 
                     <div class="wrap-input100 " requie style="border-color: black;">
-                        <input class="input100" type="text" name="username">
+                        <input class="input100" type="text" name="username" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Tên đăng nhập</span>
                     </div>
                     <div class="wrap-input100 validate-input" style="border-color: black;"
                         data-validate=" Password is required ">
-                        <input class="input100 " type="password" name="pass">
+                        <input class="input100 " type="password" name="pass" required>
                         <span class="focus-input100 "></span>
                         <span class="label-input100 ">Mật Khẩu</span>
                     </div>
