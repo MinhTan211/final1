@@ -72,13 +72,13 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label class="field field_v1" style="margin-bottom: 40px;">
                                                     <select name="Role" class="field__input">
                                                         <option>
-                                                            Xin chọn vai trò
+                                                            Loại Sản Phẩm
                                                         </option>
                                                         <option value="1">
-                                                            Quản trị viên
+                                                            VietNamFood
                                                         </option>
                                                         <option value="0">
-                                                            Khách Hàng
+                                                            FastFoodLT
                                                         </option>
                                                     </select>
                                                 </label>
