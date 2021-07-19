@@ -83,7 +83,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </a>
                     </li>
                     <li class="nav-item active-pro ">
-                        <a class="nav-link" href="./Logout.php">
+                        <a class="nav-link" href="./Logout">
                             <i class="material-icons">logout</i>
                             <p>Đăng Xuất</p>
                         </a>
