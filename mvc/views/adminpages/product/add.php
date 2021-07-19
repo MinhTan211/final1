@@ -108,45 +108,37 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
-                                            <input name="file" type="file" alt="Submit" onchange="uploadFile()"  style="content: 'ewqewqe'">
+                                            <input name="file[]" type="file" multiple>
                                             <input name="up" value="Cập nhật" type="submit" style="width: 120px; height:30px; box-shadow: 5px 5px 10px #888888; background: #f5e0c2; border: transparent;">
                                             <?php
                                                     if(isset($_POST['up'])){ // Người dùng đã ấn submit
                                                         if($_FILES['file']['name'] != NULL){ // Đã chọn file
+                                                            $arr = $_FILES['file']['name'];
                                                             // Tiến hành code upload file
-                                                            if($_FILES['file']['type'] == "image/jpeg"
-                                                            || $_FILES['file']['type'] == "image/png"
-                                                            || $_FILES['file']['type'] == "image/gif"){
                                                             // là file ảnh
                                                             // Tiến hành code upload    
-                                                                if($_FILES['file']['size'] > 1048576){
-                                                                    echo "File không được lớn hơn 1mb";
-                                                                }else{
+                                                            $countfiles = count($_FILES['file']['name']);
                                                                     // file hợp lệ, tiến hành upload
-                                                                    $path = "uploads/"; // file sẽ lưu vào thư mục data
-                                                                    $tmp_name = $_FILES['file']['tmp_name'];
-                                                                    $name = $_FILES['file']['name'];
-                                                                    // Upload file
-                                                                    move_uploaded_file($tmp_name,$path.$name);
-                                                            }
-                                                            }else{
-                                                            // không phải file ảnh
-                                                            echo "Kiểu file không hợp lệ";
+                                                                    for($i=0;$i<$countfiles;$i++){
+                                                                        $filename = $_FILES['file']['name'][$i];
+                                                                        // Upload file
+                                                                        move_uploaded_file($_FILES['file']['tmp_name'][$i],'uploads/'.$filename);
+                                                                      }
                                                             }
                                                     }else{
                                                             echo "Vui lòng chọn file";
                                                     }
-                                                    }
+                                                    
                                                     ?>
-                                            <img name="ImgBig" src="../uploads/<?php echo  $name ?>" style="width: 300px; height: 300px; margin-left: 30px; margin-top: 20px;">
+                                            <img name="ImgBig" src="../uploads/<?php echo  $arr[0] ?>" style="width: 300px; height: 300px; margin-left: 30px; margin-top: 20px;">
                                         </div>
                                     </div>
                                     <div style="margin-top: 30px; margin-bottom: 30px;">
-                                        <img name="ImgSmallfisrt" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallsecond" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallthird" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallfourth" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallfifth" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallfisrt" src="../uploads/<?php echo  $arr[0] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallsecond" src="../uploads/<?php echo  $arr[1] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallthird" src="../uploads/<?php echo  $arr[2] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallfourth" src="../uploads/<?php echo  $arr[3] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallfifth" src="../uploads/<?php echo  $arr[4] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
                                     </div>
                                     <button class="btn" style="margin-right: -130px; margin-bottom: -30px; width: 250px;">
                                         <span class="btn-label">Thêm Sản Phẩm</span>
