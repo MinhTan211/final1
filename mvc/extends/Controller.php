@@ -24,5 +24,9 @@ class Controller{
     public function viewacc($view, $data=[]){
         require_once "./mvc/views/adminpages/prtk/".$view.".php";
     }
+
+    public function viewlogup($view, $data=[]){
+        require_once "./mvc/views/".$view.".php";
+    }
 }
 ?>

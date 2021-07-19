@@ -87,6 +87,11 @@ class Admin extends Controller{
         $this->viewacc("suatk");
     }
     
+    function Logout()
+    {
+        $this->viewlogup("logout");
+    }
+
     function test(){
         $account1 = $this->model("AcountModel");
         $this->viewaedt("test", ["list"=>$account1->GetTK()]);

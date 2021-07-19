@@ -37,13 +37,11 @@ The above copyright notice and this permission notice shall be included in all c
 
 <body class="">
     <script LANGUAGE="JavaScript">
-    <!--
     function confirmSubmit(User) {
         var agree = confirm("Bạn có chắc chắn xóa?");
         return agree;
     }
     // 
-    -->
     </script>
     </script>
     <div class="wrapper ">
@@ -97,7 +95,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </a>
                     </li>
                     <li class="nav-item active-pro ">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="./Logout">
                             <i class="material-icons">logout</i>
                             <p>Đăng Xuất</p>
                         </a>

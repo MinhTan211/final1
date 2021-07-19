@@ -60,7 +60,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 <body background="../public/img/img_background_header/header3.jpg">
     <script LANGUAGE="JavaScript">
-    <!--
     function confirmSubmit() {
         var agree = confirm("Are you sure you wish to continue?");
         if (agree)
@@ -68,7 +67,6 @@ The above copyright notice and this permission notice shall be included in all c
         else
             return false;
     }
-    -->
     </script>
     <div class="main-panel" style="margin-right: 50px; margin-top: -20px;">
         <!-- End Navbar -->
