@@ -14,7 +14,7 @@ class ProductModel extends DataBase
         return mysqli_query($this->con, "SELECT COUNT(*) FROM product")->fetch_row();
     }
 
-    public function GetProductType(){
+    public function GetProductType($page, $limit, $pages){
         $qr = "SELECT * FROM producttype";
         return mysqli_query($this->con,$qr);
     }

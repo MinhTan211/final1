@@ -130,7 +130,10 @@ The above copyright notice and this permission notice shall be included in all c
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                while ($row =  mysqli_fetch_array($data["listshopping"])) {
+                                                $model = $this->model('ShopModel');
+                                                include 'LoadData.php';
+                                                $data = $model->GetShop($page, $limit, $pages);
+                                                while ($row =  mysqli_fetch_array($data)) {
                                                     echo "
                                                         <tr>
                                                             <td style='width: 100px;text-align: center;'>";
@@ -160,6 +163,10 @@ The above copyright notice and this permission notice shall be included in all c
                                         </table>
                                     </div>
                                 </div>
+                                <?php
+                                    $PageName = 'listshopping';
+                                    include 'page.php';
+                                ?>
                             </div>
                         </div>
                     </div>

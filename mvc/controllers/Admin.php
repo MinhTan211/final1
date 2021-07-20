@@ -23,14 +23,12 @@ class Admin extends Controller{
 
     function Listshopping()
     {
-        $shop = $this->model("ShopModel");
-        $this->viewadmin("listshopping", ["listshopping"=>$shop->GetShop()]);
+        $this->viewadmin("listshopping");
     }
 
     function ListProducttype()
     {
-        $shoptype = $this->model("ProductModel");
-        $this->viewadmin("listproducttype", ["listproducttype"=>$shoptype->GetProductType()]);
+        $this->viewadmin("listproducttype");
     }
 
     function Add()

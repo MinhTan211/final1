@@ -127,7 +127,10 @@ The above copyright notice and this permission notice shall be included in all c
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                while ($row =  mysqli_fetch_array($data["listproducttype"])) {
+                                                $model = $this->model('ProductModel');
+                                                include 'LoadData.php';
+                                                $data = $model->GetProductType($page, $limit, $pages);
+                                                while ($row =  mysqli_fetch_array($data)) {
                                                     echo "
                                                     <tr>
                                                         <td style='width: 200px;text-align: center;'>";
@@ -151,6 +154,10 @@ The above copyright notice and this permission notice shall be included in all c
                                         </table>
                                     </div>
                                 </div>
+                                <?php
+                                    $PageName = 'listproducttype';
+                                    include 'page.php';
+                                ?>
                             </div>
                         </div>
                     </div>
