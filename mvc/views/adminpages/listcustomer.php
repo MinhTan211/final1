@@ -121,7 +121,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <th style="width: 280px; text-align: center;">
                                                     Giới Tính
                                                 </th>
-                                                <th style="width: 310px; text-align: center;">
+                                                <th style="width: 350px; text-align: center;">
                                                     Số Điện Thoại
                                                 </th>
                                                 <th style="width: 300px; text-align: center;">
@@ -158,7 +158,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                                 echo "Nữ";
                                                             }
                                                         echo "</td>
-                                                        <td style='width: 310px; text-align: center;'>";
+                                                        <td style='width: 350px; text-align: center;'>";
                                                         echo $row["Numberphone"].
                                                         "</td>
                                                         <td style='width: 300px; text-align: center;'>";
