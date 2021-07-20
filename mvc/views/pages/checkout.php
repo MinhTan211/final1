@@ -53,11 +53,9 @@
                             <li><a href="./index">Trang Chủ</a></li>
                             <li><a href="./trademark">Thương Hiệu</a></li>
                             <li><a href="./shop">Đặt Hàng</a></li>
-                            <li><a href="./login.php">Đăng Nhập</a>
-                                <ul class="dropdown">
-                                    <li><a href="./register">Đăng Ký</a></li>
-                                </ul>
-                            </li>
+                            <?php
+                                include 'ButtonLogout.php';
+                            ?>
                             <li class="active">
                                 <a href="./shopcart"><img src="../public/img/icon/bag.png" style="height: 25px;"> <span>0</span> Cart: <span>$0.00</span></a>
                             </li>

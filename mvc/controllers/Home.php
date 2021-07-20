@@ -35,5 +35,9 @@ class Home extends Controller{
     function Trademark(){
         $this->view("trademark");
     }
+    function Logout()
+    {
+        $this->viewlogup("logout");
+    }
 }
 ?>
