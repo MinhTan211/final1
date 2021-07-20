@@ -35,10 +35,13 @@
             switch($_SESSION["Role"]){
                 case 0:
                     echo "<script type='text/javascript'>
-                            window.location = 'http://localhost/Final/Home/Index'
+                            window.location = 'http://localhost/Final/Home/shop'
                         </script>";
                     break;
-                default:
+                case 1:
+                    echo "<script type='text/javascript'>
+                            window.location = 'http://localhost/Final/Admin/dashboard'
+                        </script>";
                     break;
             }
         }

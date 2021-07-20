@@ -80,7 +80,7 @@
                                 $_SESSION["Role"] = $row[0]??false;
                                 if($_SESSION["Role"]==0)
                                 echo "<script type='text/javascript'>
-                                        window.location = 'http://localhost/Final/Home/Index'
+                                        window.location = 'http://localhost/Final/Home/shop'
                                         </script>";
                                 else
                                 echo "<script type='text/javascript'>
