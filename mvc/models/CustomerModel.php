@@ -1,9 +1,17 @@
 <?php
 class CustomerModel extends DataBase{
 
-    public function GetCustomer(){
-        $qr = "SELECT * FROM informationcustomer";
+    public function GetCustomer($page, $limit, $pages){
+        $start = ($page - 1) * $limit;
+        if($page>$pages)
+            $page = $pages;
+        else if($page < 1)
+            $page = 1;
+        $qr = "SELECT * FROM informationcustomer ORDER BY MaKH LIMIT $start, $limit";
         return mysqli_query($this->con,$qr);
+    }
+    public function GetCount(){
+        return mysqli_query($this->con, "SELECT COUNT(*) FROM informationcustomer")->fetch_row();
     }
     public function ThemKH($Username){
         $qr = "INSERT INTO informationcustomer(Username) values ('$Username')";

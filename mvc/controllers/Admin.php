@@ -13,14 +13,12 @@ class Admin extends Controller{
 
     function Listcustomer()
     {
-        $customer = $this->model("CustomerModel");
-        $this->viewadmin("listcustomer", ["listcustomer"=>$customer->GetCustomer()]);
+        $this->viewadmin("listcustomer");
     }
 
     function Listproduct()
     {
-        $product = $this->model("ProductModel");
-        $this->viewadmin("listproduct", ["listproduct"=>$product->GetProduct()]);
+        $this->viewadmin("listproduct");
     }
 
     function Listshopping()
