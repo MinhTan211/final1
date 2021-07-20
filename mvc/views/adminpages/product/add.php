@@ -1,25 +1,22 @@
 <?php
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    }
-    else{
-        if(isset($_SESSION["Role"])){
-            switch($_SESSION["Role"]){
-                case 0:
-                    echo "<script type='text/javascript'>
+if (!isset($_SESSION)) {
+    session_start();
+} else {
+    if (isset($_SESSION["Role"])) {
+        switch ($_SESSION["Role"]) {
+            case 0:
+                echo "<script type='text/javascript'>
                             window.location = 'http://localhost/Final/Home/Index'
                         </script>";
-                    break;
-                default:
-                    break;
-            }
+                break;
+            default:
+                break;
         }
-        else
+    } else
         echo "<script type='text/javascript'>
                 window.location = 'http://localhost/Final/Home/Login'
             </script>";
-    }
+}
 ?>
 <!--
 =========================================================
@@ -54,7 +51,64 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="../public/admin/css/my.css" rel="stylesheet" />
     <link href="../public/admin/css/input.css" rel="stylesheet" />
     <link href="../public/admin/css/button.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function onFileSelected(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+            var imgtag = document.getElementById("ImgBig");
+            imgtag.title = selectedFile.name;
+            reader.onload = function(event) {
+                imgtag.src = event.target.result;
+            };
+            reader.readAsDataURL(selectedFile);
 
+            var selectedFile = event.target.files[1];
+            var reader1 = new FileReader();
+            var imgtag1 = document.getElementById("ImgSmallfisrt");
+            imgtag1.title = selectedFile.name;
+            reader1.onload = function(event) {
+                imgtag1.src = event.target.result;
+            };
+            reader1.readAsDataURL(selectedFile);
+
+            var selectedFile = event.target.files[2];
+            var reader2 = new FileReader();
+            var imgtag2 = document.getElementById("ImgSmallsecond");
+            imgtag2.title = selectedFile.name;
+            reader2.onload = function(event) {
+                imgtag2.src = event.target.result;
+            };
+            reader2.readAsDataURL(selectedFile);
+
+
+            var selectedFile = event.target.files[3];
+            var reader3 = new FileReader();
+            var imgtag3 = document.getElementById("ImgSmallthird");
+            imgtag3.title = selectedFile.name;
+            reader3.onload = function(event) {
+                imgtag3.src = event.target.result;
+            };
+            reader3.readAsDataURL(selectedFile);
+
+            var selectedFile = event.target.files[4];
+            var reader4 = new FileReader();
+            var imgtag4 = document.getElementById("ImgSmallfourth");
+            imgtag4.title = selectedFile.name;
+            reader4.onload = function(event) {
+                imgtag4.src = event.target.result;
+            };
+            reader4.readAsDataURL(selectedFile);
+
+            var selectedFile = event.target.files[5];
+            var reader5 = new FileReader();
+            var imgtag5 = document.getElementById("ImgSmallfifth");
+            imgtag5.title = selectedFile.name;
+            reader5.onload = function(event) {
+                imgtag5.src = event.target.result;
+            };
+            reader5.readAsDataURL(selectedFile);
+        }
+    </script>
 </head>
 
 <body background="../public/img/img_background_header/header3.jpg">
@@ -93,14 +147,14 @@ The above copyright notice and this permission notice shall be included in all c
                                                     </span>
                                                 </label>
                                                 <label class="field field_v1" style="margin-bottom: 40px;">
-                                                    <select name="Role" class="field__input">
-                                                        <option>
+                                                    <select name="MaLSP" class="field__input">
+                                                        <option name="TenLSP">
                                                             Loại Sản Phẩm
                                                         </option>
-                                                        <option value="1">
+                                                        <option name="TenLSP" value="1">
                                                             VietNamFood
                                                         </option>
-                                                        <option value="0">
+                                                        <option name="TenLSP" value="0">
                                                             FastFoodLT
                                                         </option>
                                                     </select>
@@ -108,39 +162,69 @@ The above copyright notice and this permission notice shall be included in all c
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
-                                            <input name="file[]" type="file" multiple>
-                                            <input name="up" value="Cập nhật" type="submit" style="width: 120px; height:30px; box-shadow: 5px 5px 10px #888888; background: #f5e0c2; border: transparent;">
+                                            <input name="file[]" type="file" multiple onchange="onFileSelected(event)">
                                             <?php
-                                                    if(isset($_POST['up'])){ // Người dùng đã ấn submit
-                                                        if($_FILES['file']['name'] != NULL){ // Đã chọn file
-                                                            $arr = $_FILES['file']['name'];
-                                                            // Tiến hành code upload file
-                                                            // là file ảnh
-                                                            // Tiến hành code upload    
-                                                            $countfiles = count($_FILES['file']['name']);
-                                                                    // file hợp lệ, tiến hành upload
-                                                                    for($i=0;$i<$countfiles;$i++){
-                                                                        $filename = $_FILES['file']['name'][$i];
-                                                                        // Upload file
-                                                                        move_uploaded_file($_FILES['file']['tmp_name'][$i],'uploads/'.$filename);
-                                                                      }
-                                                            }
-                                                    }else{
-                                                            echo "Vui lòng chọn file";
+                                            $new = $_FILES['file']['name'] ?? null;
+                                            if (isset($_POST['down'])) {
+                                                if ($_FILES['file']['name'] != NULL) { // Đã chọn file
+                                                    $arr = $_FILES['file']['name'];
+                                                    // Tiến hành code upload file
+                                                    // là file ảnh
+                                                    // Tiến hành code upload    
+                                                    $countfiles = count($_FILES['file']['name']);
+                                                    // file hợp lệ, tiến hành upload
+                                                    for ($i = 0; $i < $countfiles; $i++) {
+                                                        $filename = $_FILES['file']['name'][$i];
+                                                        // Upload file
+                                                        move_uploaded_file($_FILES['file']['tmp_name'][$i], 'uploads/' . $filename);
                                                     }
-                                                    
-                                                    ?>
-                                            <img name="ImgBig" src="../uploads/<?php echo  $arr[0] ?>" style="width: 300px; height: 300px; margin-left: 30px; margin-top: 20px;">
+                                                }
+                                                $TenSP          = "";
+                                                $ImgBig         = $new[0];
+                                                $ImgSmallfisrt  = $new[1];
+                                                $ImgSmallsecond = $new[2];
+                                                $ImgSmallthird  = $new[3];
+                                                $ImgSmallfourth = $new[4];
+                                                $ImgSmallfifth  = $new[5];
+                                                $MoTa           = "";
+                                                $Gia            = "";
+                                                $MaLSP          = "";
+                                                $TenLSP         = "";
+                                                if (isset($_POST["TenSP"])) {
+                                                    $TenSP = $_POST['TenSP'];
+                                                }
+                                                if (isset($_POST["Gia"])) {
+                                                    $Gia = $_POST['Gia'];
+                                                }
+                                                if (isset($_POST["MoTa"])) {
+                                                    $MoTa = $_POST['MoTa'];
+                                                }
+                                                if (isset($_POST["MaLSP"])) {
+                                                    $MaLSP = $_POST['MaLSP'];
+                                                }
+                                                if (isset($_POST["TenLSP"])) {
+                                                    $TenLSP = $_POST['TenLSP'];
+                                                }
+
+                                                $themsp = $this->model("ProductModel");
+                                                $themsp->ThemSP($TenSP, $ImgBig, $ImgSmallfisrt, $ImgSmallsecond, $ImgSmallthird, $ImgSmallfourth, $ImgSmallfifth, $MoTa, $Gia, $MaLSP, $TenLSP);
+
+                                                echo "<script type='text/javascript'>
+                                                             window.location = 'http://localhost/Final/Admin/listproduct'
+                                                      </script>";
+                                            }
+                                            ?>
+                                            <img id="ImgBig" src="../public/img/img_logo/Icon.png" style="width: 300px; height: 300px; margin-left: 30px; margin-top: 20px; border-radius: 20px;">
                                         </div>
                                     </div>
-                                    <div style="margin-top: 30px; margin-bottom: 30px;">
-                                        <img name="ImgSmallfisrt" src="../uploads/<?php echo  $arr[0] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallsecond" src="../uploads/<?php echo  $arr[1] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallthird" src="../uploads/<?php echo  $arr[2] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallfourth" src="../uploads/<?php echo  $arr[3] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallfifth" src="../uploads/<?php echo  $arr[4] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                    <div style="margin-top: 5px; margin-bottom: 10px;">
+                                        <img id="ImgSmallfisrt" src="../public/img/img_logo/Icon.png" style="width: 100px; height: 100px; margin-left: 60px; border-radius: 20px;">
+                                        <img id="ImgSmallsecond" src="../public/img/img_logo/Icon.png" style="width: 100px; height: 100px; margin-left: 60px; border-radius: 20px;">
+                                        <img id="ImgSmallthird" src="../public/img/img_logo/Icon.png" style="width: 100px; height: 100px; margin-left: 60px; border-radius: 20px;">
+                                        <img id="ImgSmallfourth" src="../public/img/img_logo/Icon.png" style="width: 100px; height: 100px; margin-left: 60px; border-radius: 20px;">
+                                        <img id="ImgSmallfifth" src="../public/img/img_logo/Icon.png" style="width: 100px; height: 100px; margin-left: 60px; border-radius: 20px;">
                                     </div>
-                                    <button class="btn" style="margin-right: -130px; margin-bottom: -30px; width: 250px;">
+                                    <button class="btn" name="down" style="margin-right: -130px; margin-bottom: -30px; width: 250px;">
                                         <span class="btn-label">Thêm Sản Phẩm</span>
                                     </button>
                                 </form>

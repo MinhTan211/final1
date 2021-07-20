@@ -18,5 +18,10 @@ class ProductModel extends DataBase
         $qr = "SELECT * FROM producttype";
         return mysqli_query($this->con,$qr);
     }
+
+    public function ThemSP($TenSP, $ImgBig, $ImgSmallfisrt, $ImgSmallsecond, $ImgSmallthird, $ImgSmallfourth, $ImgSmallfifth, $MoTa, $Gia, $MaLSP, $TenLSP){
+        $qr = "INSERT INTO product(TenSP, ImgBig, ImgSmallfisrt, ImgSmallsecond, ImgSmallthird, ImgSmallfourth, ImgSmallfifth, MoTa, Gia, MaLSP, TenLSP) VALUES ('$TenSP', '$ImgBig', '$ImgSmallfisrt', '$ImgSmallsecond', '$ImgSmallthird', '$ImgSmallfourth', '$ImgSmallfifth', '$MoTa', '$Gia', '$MaLSP', '$TenLSP')";
+        return mysqli_query($this->con,$qr);
+    }
 }
 ?>
