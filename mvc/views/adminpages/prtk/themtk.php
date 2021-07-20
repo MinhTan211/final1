@@ -88,7 +88,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     $data[$themtk->ThemTK($Username,$Password, $Role)]??null;
                                     if($Role == 0){
                                         $themkh = $this->model("CustomerModel");
-                                        $datakh[$themkh->ThemKH($Username)];
+                                        $datakh[$themkh->ThemKH($Username)]??null;
                                     }
                                     echo "<script type='text/javascript'>
                                         window.location = 'http://localhost/Final/Admin/listaccoun'

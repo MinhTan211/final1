@@ -146,7 +146,25 @@ The above copyright notice and this permission notice shall be included in all c
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                while ($row =  mysqli_fetch_array($data["listaccount"])) {
+                                                function curPageURL() {
+                                                    $pageURL = 'http';
+                                                    if ($_SERVER["HTTPS"]??null == "on") {$pageURL .= "s";}
+                                                    $pageURL .= "://";
+                                                    if ($_SERVER["SERVER_PORT"] != "80") {
+                                                    $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+                                                    } else {
+                                                    $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+                                                    }
+                                                    return $pageURL;
+                                                    }
+                                                    curPageURL();
+                                                    $getpage = explode("=",filter_var(trim($_SERVER["REQUEST_URI"], "/")));
+                                                if(empty($getpage[1]))
+                                                    $page = 1;                                                   
+                                                else
+                                                    $page=$getpage[1];
+                                                $account = $this->model("AcountModel")->GetTK($page);
+                                                while ($row =  mysqli_fetch_array($account)) {
                                                     if($row["Role"] == 1)
                                                         $Vt = 'Quản trị viên';
                                                     else
@@ -177,6 +195,40 @@ The above copyright notice and this permission notice shall be included in all c
                                         </table>
                                     </div>
                                 </div>
+                                <!--Pagination-->
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <?php
+                                            $Count = $this->model("AcountModel")->GetCountTK();
+                                            $pages = $Count[0]/5;
+                                            if($page>1)
+                                                echo '<li class="page-item"><a class="page-link" href="./listaccoun?page='.($page-1).'" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                                <span class="sr-only">Previous</span>
+                                                                </a></li>';
+                                            else
+                                                echo '<li class="page-item"><span class="page-link" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                            <span class="sr-only">Previous</span>
+                                                            </span></li>';
+                                            $i =1 ;
+                                            for($i; $i < ($pages+1); $i++){
+                                                if(($i) == $page)
+                                                    echo "<li class='page-item'><span class='page-link' >".$page."</span></li>";
+                                                else
+                                                    echo '<li class="page-item"><a href="./listaccoun?page='.($i).'" class="page-link" >'.($i).'</span></li>';
+                                            }
+                                            if($page>=$pages)
+                                                echo '<li class="page-item"><span class="page-link" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            <span class="sr-only">Next</span></span></li>';
+                                            else
+                                                echo '<li class="page-item"><a class="page-link" href="./listaccoun?page='.($page+1).'" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            <span class="sr-only">Next</span></a></li>';
+                                        ?>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>

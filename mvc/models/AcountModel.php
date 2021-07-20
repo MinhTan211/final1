@@ -1,9 +1,20 @@
 <?php
 class AcountModel extends DataBase{
 
-    public function GetTK(){
-        $qr = "SELECT * FROM account";
+    public function GetTK($page){
+        $limit = 5;
+        $start = ($page - 1) * $limit;
+        $count = mysqli_query($this->con, "SELECT COUNT(*) FROM account")->fetch_row();
+        $pages = ceil($count[0]/$limit);
+        if($page>$pages)
+            $page = $pages;
+        else if($page < 1)
+            $page = 1;
+        $qr = "SELECT * FROM account ORDER BY Username DESC LIMIT $start, $limit";
         return mysqli_query($this->con,$qr);
+    }
+    public function GetCountTK(){
+        return mysqli_query($this->con, "SELECT COUNT(*) FROM account")->fetch_row();
     }
     public function CheckTK($Username){
         $qr = "SELECT * FROM account WHERE Username = '$Username'";

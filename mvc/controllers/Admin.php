@@ -8,8 +8,7 @@ class Admin extends Controller{
 
     function Listaccoun()
     {
-        $account = $this->model("AcountModel");
-        $this->viewadmin("listaccoun", ["listaccount"=>$account->GetTK()]);
+        $this->viewadmin("listaccoun");
     }
 
     function Listcustomer()
