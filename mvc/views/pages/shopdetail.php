@@ -212,7 +212,7 @@
                             echo "<div class='col-lg-3'>
                             <div class='product__item'>
                                 <div class='product__item__pic set-bg'>
-                                    <img src='../uploads/"; echo $row1["ImgBig"]."'style='height: 260px; width: 260px;'>
+                                    <a href='./shopdetail?id=";echo $row1[0]."'><img src='../uploads/"; echo $row1["ImgBig"]."'style='height: 260px; width: 260px;'></a>
                                     <div class='product__label'>
                                         <span>"; echo $row1["TenLSP"]."</span>
                                     </div>
