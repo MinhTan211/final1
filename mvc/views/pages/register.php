@@ -14,7 +14,7 @@
                 $data[$themtk->ThemTK($Username,$Password, $Role)]??null;
                 if($Role == 0){
                     $themkh = $this->model("CustomerModel");
-                    $datakh[$themkh->ThemKH($Username)];
+                    $datakh[$themkh->ThemKH($Username)]??null;
                     $_SESSION["Username"] = $Username;
                     $_SESSION["Password"] = $Password;
                     $_SESSION["Role"] = $Role;

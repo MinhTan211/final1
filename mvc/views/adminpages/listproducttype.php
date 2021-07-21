@@ -127,7 +127,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $model = $this->model('ProductModel');
+                                                $model = $this->model('ProductTypeModel');
                                                 include 'LoadData.php';
                                                 $data = $model->GetProductType($page, $limit, $pages);
                                                 while ($row =  mysqli_fetch_array($data)) {

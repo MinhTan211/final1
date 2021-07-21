@@ -95,7 +95,6 @@ The above copyright notice and this permission notice shall be included in all c
                         </a>
                     </li>
                     <?php
-                        $PageName = 'listaccoun';
                         include 'ButtonLogout.php'
                     ?>
                 </ul>
@@ -181,6 +180,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         </table>
                                     </div>
                                     <?php
+                                        $PageName = 'listaccoun';
                                         include 'page.php';
                                     ?>
                                 </div>

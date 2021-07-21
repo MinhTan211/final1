@@ -15,7 +15,12 @@ class ProductModel extends DataBase
     }
 
     public function GetProductType($page, $limit, $pages){
-        $qr = "SELECT * FROM producttype";
+        $start = ($page - 1) * $limit;
+        if($page>$pages)
+            $page = $pages;
+        else if($page < 1)
+            $page = 1;
+        $qr = "SELECT * FROM producttype ORDER BY MaLSP LIMIT $start, $limit";
         return mysqli_query($this->con,$qr);
     }
 
