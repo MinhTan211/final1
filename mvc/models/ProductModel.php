@@ -42,5 +42,10 @@ class ProductModel extends DataBase
         $qr = "SELECT * FROM product WHERE TenSP = '$TenSP'";
         return mysqli_num_rows(mysqli_query($this->con,$qr));
     }
+
+    public function Show($MaLSP){
+        $qr = "SELECT * FROM product WHERE MaLSP = '$MaLSP'";
+        return mysqli_query($this->con,$qr);
+    }
 }
 ?>

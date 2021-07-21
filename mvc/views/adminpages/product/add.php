@@ -184,7 +184,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     $arr[2] = $TenSP."_3";
                                                     $arr[3] = $TenSP."_4";
                                                     $arr[4] = $TenSP."_5";
-                                                    $arr[4] = $TenSP."_6";
+                                                    $arr[5] = $TenSP."_6";
                                                     $countfiles = count($_FILES['file']['name']);
                                                     // file hợp lệ, tiến hành upload
                                                     for ($i = 0; $i < $countfiles; $i++) {

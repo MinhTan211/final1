@@ -48,6 +48,25 @@
     <header class="header">
         <div class="container">
             <div class="row">
+            <?php
+                function curPageURL() {
+                    $pageURL = 'http';
+                    if ($_SERVER["HTTPS"]??null == "on") {$pageURL .= "s";}
+                    $pageURL .= "://";
+                    if ($_SERVER["SERVER_PORT"] != "80") {
+                    $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+                    } else {
+                    $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+                    }
+                    return $pageURL;
+                    }
+                    curPageURL();
+                    $arr = explode("=",filter_var(trim($_SERVER["REQUEST_URI"], "/")));
+                    $id = $arr[1];
+                    $suasp = $this->model("ProductModel");
+                    $rs = $suasp->ChitietSP($id);
+                    $row =  mysqli_fetch_assoc($rs);
+                ?>
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu fixed-top" style="background-color:#fcc77b;">
                         <ul>
@@ -91,37 +110,34 @@
                 <div class="col-lg-6">
                     <div class="product__details__img">
                         <div class="product__details__big__img">
-                            <img style="height: 450px; height: 450px;" class="big_img" src="../public/img/img_produce/kem.jpg" alt="">
+                            <img name="ImgBig" style="height: 450px; height: 450px;" class="big_img" src="../uploads/<?php echo $row["ImgBig"] ?>" alt="">
                         </div>
                         <div class="product__details__thumb">
                             <div class="pt__item active">
-                                <img style="width: 90px; height: 90px;" data-imgbigurl="../public/img/img_produce/lemon.jpg" src="../public/img/img_produce/lemon.jpg" alt="">
+                                <img name="ImgSmallfisrt" style="width: 90px; height: 90px;" data-imgbigurl="../uploads/<?php echo $row["ImgSmallfisrt"] ?>" src="../uploads/<?php echo $row["ImgSmallfisrt"] ?>" alt="">
                             </div>
                             <div class="pt__item">
-                                <img style="width: 90px; height: 90px;" data-imgbigurl="../public/img/img_produce/lemon.jpg" src="../public/img/img_produce/lemon.jpg" alt="">
+                                <img name="ImgSmallsecond" style="width: 90px; height: 90px;" data-imgbigurl="../uploads/<?php echo $row["ImgSmallsecond"] ?>" src="../uploads/<?php echo $row["ImgSmallsecond"] ?>" alt="">
                             </div>
                             <div class="pt__item">
-                                <img style="width: 90px; height: 90px;" data-imgbigurl="../public/img/img_produce/lemon.jpg" src="../public/img/img_produce/lemon.jpg" alt="">
+                                <img name="ImgSmallthird" style="width: 90px; height: 90px;" data-imgbigurl="../uploads/<?php echo $row["ImgSmallthird"] ?>" src="../uploads/<?php echo $row["ImgSmallthird"] ?>" alt="">
                             </div>
                             <div class="pt__item">
-                                <img style="width: 90px; height: 90px;" data-imgbigurl="../public/img/img_produce/lemon.jpg" src="../public/img/img_produce/lemon.jpg" alt="">
+                                <img name="ImgSmallfourth" style="width: 90px; height: 90px;" data-imgbigurl="../uploads/<?php echo $row["ImgSmallfourth"] ?>" src="../uploads/<?php echo $row["ImgSmallfourth"] ?>" alt="">
                             </div>
                             <div class="pt__item">
-                                <img style="width: 90px; height: 90px;" data-imgbigurl="../public/img/img_produce/lemon.jpg" src="../public/img/img_produce/lemon.jpg" alt="">
+                                <img name="ImgSmallfifth" style="width: 90px; height: 90px;" data-imgbigurl="../uploads/<?php echo $row["ImgSmallfifth"] ?>" src="../uploads/<?php echo $row["ImgSmallfifth"] ?>" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                        <div class="product__label">Drink</div>
-                        <h4>Soda Lemon</h4>
-                        <h5>30.000 VNĐ</h5>
-                        <p>Hương thơm của Chanh và soda là một sự hào huyện tuyệt vời, vị chua từ chanh cùng với sự chát nhẹ của soda giúp cho hương vị càng ngọt ngào</p>
-                        <ul>
-                            <li>Loại: <span> Drink</span></li>
-                        </ul>
-                        <div class="product__details__option">
+                        <div class="product__label"><?php echo $row["TenLSP"] ?></div>
+                        <h4><?php echo $row["TenSP"] ?></h4>
+                        <h5><?php echo $row["Gia"]?> VNĐ</h5>
+                        <p><?php echo $row["MoTa"] ?></p>
+                        <div class="product__details__option" style="margin-top: 148px;">
                             <div class="quantity">
                                 <div class="pro-qty">
                                     <input type="text" value="2">
@@ -146,16 +162,14 @@
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-lg-8">
-                                    <p>Soda thường có vị ngọt. Không chỉ uống trực tiếp, Soda còn được sử dụng để pha chế thành nhiều loại đồ uống khác. Soda có thể kết hợp được với nhiều sản phẩm khác như trái cây, siro, kem hay sữa,… để tạo ra nhiều hương
-                                        vị khác nhau.</p>
+                                    <p><?php echo $row["MoTa"] ?></p>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-lg-8">
-                                    <p>Soda hay pop, tonic là một loại nước khoáng có gas tại Mỹ, được dùng để chỉ các loại đồ uống ở dạng có đường và không đường, không cồn, có cấu tạo hóa học đơn giản với thành phần chính là nước, vị ngọt (từ đường, syrup,
-                                        nước trái cây hay chất tạo ngọt) và hương liệu.
+                                    <p><?php echo $row["TenLSP"]?>
                                     </p>
                                 </div>
                             </div>
@@ -189,108 +203,33 @@
             </div>
             <div class="row">
                 <div class="related__products__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg">
-                                <img src="../public/img/img_produce/kem.jpg" style="height: 260px; width: 260px;">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
+                    <?php
+                        $MaLSP  = $row["MaLSP"];
+                        $Show   = $this->model("ProductModel");
+                        $data   = $Show->Show($MaLSP);
+                        while($row1 =  mysqli_fetch_array($data))
+                        {
+                            echo "<div class='col-lg-3'>
+                            <div class='product__item'>
+                                <div class='product__item__pic set-bg'>
+                                    <img src='../uploads/"; echo $row1["ImgBig"]."'style='height: 260px; width: 260px;'>
+                                    <div class='product__label'>
+                                        <span>"; echo $row1["TenLSP"]."</span>
+                                    </div>
+                                </div>
+                                <div class='product__item__text'>";
+                                $id = $row1["MaSP"];
+                                echo "
+                                    <h6><a href='../detail?id=";echo $row1[0]."'>"; echo $row1["TenSP"]."</a></h6>
+                                    <div class='product__item__price'>$32.00</div>
+                                    <div class='cart_add'>
+                                        <a href='#'>Add to cart</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Dozen Cupcakes</a></h6>
-                                <div class="product__item__price">$32.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg">
-                                <img src="../public/img/img_produce/kem.jpg" style="height: 260px; width: 260px;">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Cookies and Cream</a></h6>
-                                <div class="product__item__price">$30.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg">
-                                <img src="../public/img/img_produce/kem.jpg" style="height: 260px; width: 260px;">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Gluten Free Mini Dozen</a></h6>
-                                <div class="product__item__price">$31.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg">
-                                <img src="../public/img/img_produce/kem.jpg" style="height: 260px; width: 260px;">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Cookie Dough</a></h6>
-                                <div class="product__item__price">$25.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg">
-                                <img src="../public/img/img_produce/kem.jpg" style="height: 260px; width: 260px;">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Vanilla Salted Caramel</a></h6>
-                                <div class="product__item__price">$05.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg">
-                                <img src="../public/img/img_produce/kem.jpg" style="height: 260px; width: 260px;">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">German Chocolate</a></h6>
-                                <div class="product__item__price">$14.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </div>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
