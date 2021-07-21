@@ -25,7 +25,7 @@
             }
             else{
                 echo "<script type = 'text/javascript'>
-                let isExecuted = confirm('Tài Khoản Đã Tồn Tại Xin Nhập Lại?');
+                let isExecuted = confirm('Tài Khoản Đã Tồn Tại Xin Nhập Lại');
                 console.log(isExecuted);
                 </script>
                 ";

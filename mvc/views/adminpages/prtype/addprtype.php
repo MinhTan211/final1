@@ -72,15 +72,24 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-lg-6 col-md-6">
                                             <div class="page">
                                                 <label class="field field_v1">
-                                                    <input name="TenLSP" class="field__input" placeholder="Xin mời nhập...">
+                                                    <input name="TenLSP" class="field__input" required placeholder="Xin mời nhập...">
                                                     <?php
                                                     $TenLSP = "";
                                                     if (isset($_POST['up'])  == "POST") {
-                                                        if (isset($_POST["TenLSP"])) {
-                                                            $TenLSP = $_POST['TenLSP'];
+                                                        $TenLSP = $_POST['TenLSP'];
+                                                        $model = $this->model('ProductTypeModel');
+                                                        if($model->CheckLSP($TenLSP)==0){
+                                                            $model->ThemLSP($TenLSP)??false;
+                                                            echo "<script type='text/javascript'>
+                                                            window.location = 'http://localhost/Final/Admin/listproducttype'
+                                                            </script>";
                                                         }
-                                                        $themLSP = $this->model("ProductModel");
-                                                        $themLSP->ThemLSP($TenLSP);
+                                                        else{
+                                                            echo "<script type = 'text/javascript'>
+                                                            let isExecuted = confirm('Loại sản phẩm đã tồn tại');
+                                                            console.log(isExecuted);
+                                                            </script>";
+                                                        }   
                                                     }
                                                     ?>
                                                     <span class="field__label-wrap">
