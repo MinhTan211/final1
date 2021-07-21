@@ -54,7 +54,64 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="../public/admin/css/my.css" rel="stylesheet" />
     <link href="../public/admin/css/input.css" rel="stylesheet" />
     <link href="../public/admin/css/button.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function onFileSelected(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+            var imgtag = document.getElementById("ImgBig");
+            imgtag.title = selectedFile.name;
+            reader.onload = function(event) {
+                imgtag.src = event.target.result;
+            };
+            reader.readAsDataURL(selectedFile);
 
+            var selectedFile = event.target.files[1];
+            var reader1 = new FileReader();
+            var imgtag1 = document.getElementById("ImgSmallfisrt");
+            imgtag1.title = selectedFile.name;
+            reader1.onload = function(event) {
+                imgtag1.src = event.target.result;
+            };
+            reader1.readAsDataURL(selectedFile);
+
+            var selectedFile = event.target.files[2];
+            var reader2 = new FileReader();
+            var imgtag2 = document.getElementById("ImgSmallsecond");
+            imgtag2.title = selectedFile.name;
+            reader2.onload = function(event) {
+                imgtag2.src = event.target.result;
+            };
+            reader2.readAsDataURL(selectedFile);
+
+
+            var selectedFile = event.target.files[3];
+            var reader3 = new FileReader();
+            var imgtag3 = document.getElementById("ImgSmallthird");
+            imgtag3.title = selectedFile.name;
+            reader3.onload = function(event) {
+                imgtag3.src = event.target.result;
+            };
+            reader3.readAsDataURL(selectedFile);
+
+            var selectedFile = event.target.files[4];
+            var reader4 = new FileReader();
+            var imgtag4 = document.getElementById("ImgSmallfourth");
+            imgtag4.title = selectedFile.name;
+            reader4.onload = function(event) {
+                imgtag4.src = event.target.result;
+            };
+            reader4.readAsDataURL(selectedFile);
+
+            var selectedFile = event.target.files[5];
+            var reader5 = new FileReader();
+            var imgtag5 = document.getElementById("ImgSmallfifth");
+            imgtag5.title = selectedFile.name;
+            reader5.onload = function(event) {
+                imgtag5.src = event.target.result;
+            };
+            reader5.readAsDataURL(selectedFile);
+        }
+    </script>
 </head>
 
 <body background="../public/img/img_background_header/header3.jpg">
@@ -70,43 +127,86 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p class="card-category"></p>
                             </div>
                             <div class="card-body" style="margin-top: 30px; margin-left: 50px;">
-                                <form style="font-family: Courier New;">
+                                <form style="font-family: Courier New;" method="POST">
+                                <?php
+                                    function curPageURL() {
+                                    $pageURL = 'http';
+                                    if ($_SERVER["HTTPS"]??null == "on") {$pageURL .= "s";}
+                                    $pageURL .= "://";
+                                    if ($_SERVER["SERVER_PORT"] != "80") {
+                                    $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+                                    } else {
+                                    $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+                                    }
+                                    return $pageURL;
+                                    }
+                                    curPageURL();
+                                    $arr = explode("=",filter_var(trim($_SERVER["REQUEST_URI"], "/")));
+                                    $id = $arr[1];
+                                    $suasp = $this->model("ProductModel");
+                                    $rs = $suasp->ChitietSP($id);
+                                    $row =  mysqli_fetch_assoc($rs);
+                                    $TenSP          = "";
+                                    $MoTa           = "";
+                                    $Gia            = "";
+                                    if (isset($_POST['down'])) {
+
+                                        if (isset($_POST["TenSP"])) {
+                                            $TenSP = $_POST['TenSP'];
+                                        }
+                                        if (isset($_POST["Gia"])) {
+                                            $Gia = $_POST['Gia'];
+                                        }
+                                        if (isset($_POST["MoTa"])) {
+                                            $MoTa = $_POST['MoTa'];
+                                        }
+                                        $suasp->UpdatePr($id, $TenSP,$MoTa, $Gia);
+                                        echo "<script type='text/javascript'>
+                                            window.location = 'http://localhost/Final/Admin/listproduct'
+                                            </script>";
+                                }
+                                ?>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="page">
                                                 <label class="field field_v1">
-                                                    <input name="TenSP" class="field__input" placeholder="Xin mời nhập...">
+                                                    <input name="TenSP" class="field__input" placeholder="Xin mời nhập..." value="<?php echo $row["TenSP"]?>">
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Tên Sản Phẩm</span>
                                                     </span>
                                                 </label>
                                                 <label class="field field_v2">
-                                                    <input name="Gia" class="field__input" placeholder="Xin mời nhập...">
+                                                    <input name="Gia" class="field__input" placeholder="Xin mời nhập..." value="<?php echo $row["Gia"]?>">
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Giá</span>
                                                     </span>
                                                 </label>
                                                 <label class="field field_v3">
-                                                    <textarea name="MoTa" class="field__input" placeholder="Xin mời nhập..."></textarea>
+                                                    <textarea name="MoTa" class="field__input" placeholder="Xin mời nhập..." ><?php echo $row["MoTa"]?></textarea>
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Mô Tả</span>
                                                     </span>
                                                 </label>
+                                                <label class="field field_v1" style="margin-bottom: 40px;">
+                                                    <select name="MaLSP" class="field__input">
+                                                        <option value="<?php echo $row["TenLSP"]."/".$row["MaLSP"] ?>"><?php echo $row["TenLSP"] ?></option>
+                                                    </select>
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
-                                            <input name="upload" type="file" alt="Submit" onchange="uploadFile()">
-                                            <img name="ImgBig" src="../public/img/img_logo/logo1.png" style="width: 300px; height: 300px; margin-left: 60px;">
+                                        <input name="file[]" type="file" multiple onchange="onFileSelected(event)">
+                                            <img name="ImgBig" src="../uploads/<?php echo $row["ImgSmallfisrt"] ?>" style="width: 300px; height: 300px; margin-left: 60px;">
                                         </div>
                                     </div>
                                     <div style="margin-top: 30px; margin-bottom: 30px;">
-                                        <img name="ImgSmallfisrt" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallsecond" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallthird" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallfourth" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
-                                        <img name="ImgSmallfifth" src="../public/img/img_logo/logo1.png" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallfisrt" src="../uploads/<?php echo $row["ImgSmallfisrt"] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallsecond" src="../uploads/<?php echo $row["ImgSmallsecond"] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallthird" src="../uploads/<?php echo $row["ImgSmallthird"] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallfourth" src="../uploads/<?php echo $row["ImgSmallfourth"] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
+                                        <img name="ImgSmallfifth" src="../uploads/<?php echo $row["ImgSmallfifth"] ?>" style="width: 100px; height: 100px; margin-left: 60px;">
                                     </div>
-                                    <button class="btn" style="margin-right: -130px; margin-bottom: -30px; width: 250px;">
+                                    <button class="btn" name="down" style="margin-right: -130px; margin-bottom: -30px; width: 250px;">
                                         <span class="btn-label">Sửa Sản Phẩm</span>
                                     </button>
                                 </form>

@@ -148,15 +148,16 @@ The above copyright notice and this permission notice shall be included in all c
                                                 </label>
                                                 <label class="field field_v1" style="margin-bottom: 40px;">
                                                     <select name="MaLSP" class="field__input">
-                                                        <option name="TenLSP">
-                                                            Loại Sản Phẩm
-                                                        </option>
-                                                        <option name="TenLSP" value="1">
-                                                            VietNamFood
-                                                        </option>
-                                                        <option name="TenLSP" value="0">
-                                                            FastFoodLT
-                                                        </option>
+                                                        <?php
+                                                        $getpr  = $this->model("ProductModel");
+                                                        $data = $getpr->Getpr();
+                                                        while ($row =  mysqli_fetch_array($data)) {
+                                                            echo "<option value='";
+                                                            echo $row["TenLSP"]."/".$row["MaLSP"]."' name='TenLSP'>";
+                                                            echo $row["TenLSP"];
+                                                            echo "</option>";
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </label>
                                             </div>
@@ -164,13 +165,9 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-lg-6 col-md-6">
                                             <input name="file[]" type="file" multiple onchange="onFileSelected(event)">
                                             <?php
-                                            $new = $_FILES['file']['name'] ?? null;
                                             if (isset($_POST['down'])) {
                                                 if ($_FILES['file']['name'] != NULL) { // Đã chọn file
-                                                    $arr = $_FILES['file']['name'];
-                                                    // Tiến hành code upload file
-                                                    // là file ảnh
-                                                    // Tiến hành code upload    
+                                                    $arr = $_FILES['file']['name'];  
                                                     $countfiles = count($_FILES['file']['name']);
                                                     // file hợp lệ, tiến hành upload
                                                     for ($i = 0; $i < $countfiles; $i++) {
@@ -180,16 +177,18 @@ The above copyright notice and this permission notice shall be included in all c
                                                     }
                                                 }
                                                 $TenSP          = "";
-                                                $ImgBig         = $new[0];
-                                                $ImgSmallfisrt  = $new[1];
-                                                $ImgSmallsecond = $new[2];
-                                                $ImgSmallthird  = $new[3];
-                                                $ImgSmallfourth = $new[4];
-                                                $ImgSmallfifth  = $new[5];
+                                                $ImgBig         = $arr[0];
+                                                $ImgSmallfisrt  = $arr[1];
+                                                $ImgSmallsecond = $arr[2];
+                                                $ImgSmallthird  = $arr[3];
+                                                $ImgSmallfourth = $arr[4];
+                                                $ImgSmallfifth  = $arr[5];
                                                 $MoTa           = "";
                                                 $Gia            = "";
-                                                $MaLSP          = "";
-                                                $TenLSP         = "";
+                                                $ArrayMaLSP          = $_POST['MaLSP'];
+                                                $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
+                                                $MaLSP          = $ma[1];
+                                                $TenLSP         = $ma[0];
                                                 if (isset($_POST["TenSP"])) {
                                                     $TenSP = $_POST['TenSP'];
                                                 }
@@ -199,16 +198,8 @@ The above copyright notice and this permission notice shall be included in all c
                                                 if (isset($_POST["MoTa"])) {
                                                     $MoTa = $_POST['MoTa'];
                                                 }
-                                                if (isset($_POST["MaLSP"])) {
-                                                    $MaLSP = $_POST['MaLSP'];
-                                                }
-                                                if (isset($_POST["TenLSP"])) {
-                                                    $TenLSP = $_POST['TenLSP'];
-                                                }
-
                                                 $themsp = $this->model("ProductModel");
                                                 $themsp->ThemSP($TenSP, $ImgBig, $ImgSmallfisrt, $ImgSmallsecond, $ImgSmallthird, $ImgSmallfourth, $ImgSmallfifth, $MoTa, $Gia, $MaLSP, $TenLSP);
-
                                                 echo "<script type='text/javascript'>
                                                              window.location = 'http://localhost/Final/Admin/listproduct'
                                                       </script>";

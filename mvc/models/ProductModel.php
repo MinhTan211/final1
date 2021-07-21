@@ -24,8 +24,23 @@ class ProductModel extends DataBase
         return mysqli_query($this->con,$qr);
     }
 
+    public function Getpr(){
+        $qr = "SELECT * FROM producttype";
+        return mysqli_query($this->con,$qr);
+    }
+
     public function ThemLSP($TenLSP){
         $qr = "INSERT INTO producttype(TenLSP) VALUES ('$TenLSP')";
+        return mysqli_query($this->con,$qr);
+    }
+
+    public function UpdatePr($id, $TenSP, $MoTa, $Gia){
+        $qr = "UPDATE product SET TenSP ='$TenSP', MoTa='$MoTa', Gia ='$Gia' WHERE MaSP = '$id'";
+        return mysqli_query($this->con,$qr);
+    }
+
+    public function ChitietSP($id){
+        $qr = "SELECT * FROM product WHERE MaSP = '$id'";
         return mysqli_query($this->con,$qr);
     }
 }

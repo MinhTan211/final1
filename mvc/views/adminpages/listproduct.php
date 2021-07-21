@@ -161,7 +161,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                          <a href='./delete'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                              delete
                                                              </span></button></a>
-                                                         <a href='./edit'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
+                                                         <a href='./edit?id=";echo $row[0]."'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                          border_color
                                                              </span></button></a>
                                                          </td>
