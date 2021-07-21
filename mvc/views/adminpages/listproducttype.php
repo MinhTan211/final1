@@ -143,7 +143,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                         <a href='./deleteprtype'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                             delete
                                                             </span></button></a>
-                                                        <a href='./editprtype'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
+                                                        ".'<a href="./editprtype?MaLSP='.$row[0].'?TenLSP='.$row[1].'"'."><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                         border_color
                                                             </span></button></a>
                                                         </td>

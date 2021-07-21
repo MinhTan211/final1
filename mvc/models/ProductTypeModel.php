@@ -18,8 +18,11 @@ class ProductTypeModel extends DataBase
         return mysqli_query($this->con,$qr);
     }
     public function CheckLSP($TenLSP){
-        $row = mysqli_query($this->con, "SELECT COUNT(*) FROM producttype WHERE TenLSP = '$TenLSP'")->fetch_row();
-        return $row[0];
+        return mysqli_num_rows(mysqli_query($this->con, "SELECT * FROM producttype WHERE TenLSP = '$TenLSP'"));
+    }
+    public function SuaLSP($MaLSP, $TenLSP){
+        $qr = "UPDATE producttype SET TenLSP = '$TenLSP' WHERE MaLSP = '$MaLSP'";
+        return mysqli_query($this->con,$qr);
     }
 }
 ?>

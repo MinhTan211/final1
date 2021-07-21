@@ -70,12 +70,49 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p class="card-category"></p>
                             </div>
                             <div class="card-body" style="margin-top: 30px; margin-left: 50px;">
-                                <form style="font-family: Courier New;">
+                            <?php
+                                function curPageURL() {
+                                    $pageURL = 'http';
+                                    if ($_SERVER["HTTPS"]??null == "on") {$pageURL .= "s";}
+                                    $pageURL .= "://";
+                                    if ($_SERVER["SERVER_PORT"] != "80") {
+                                    $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+                                    } else {
+                                    $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+                                    }
+                                    return $pageURL;
+                                    }
+                                    curPageURL();
+                                    $arr = explode("=",filter_var(trim($_SERVER["REQUEST_URI"], "/")));                            
+                                if($_SERVER["REQUEST_METHOD"] == "GET"){
+                                    $MaLSP = $arr[1];
+                                    $TenLSP = $arr[2];
+                                }
+                                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                                    $TenLSP = $_POST['TenLSP'];
+                                    $MaLSP = $_POST['MaLSP'];
+                                    $model = $this->model('ProductTypeModel');
+                                    if($model->CheckLSP($TenLSP)==0){
+                                        $model->SuaLSP($MaLSP,$TenLSP)??false;
+                                        echo "<script type='text/javascript'>
+                                        window.location = 'http://localhost/Final/Admin/listproducttype'
+                                        </script>";
+                                    }
+                                    else{
+                                        echo "<script type = 'text/javascript'>
+                                        let isExecuted = confirm('Tên thay đổi đã tồn tại');
+                                        console.log(isExecuted);
+                                        </script>";
+                                    }   
+                                }
+                            ?>
+                                <form method="POST" style="font-family: Courier New;">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="page">
                                                 <label class="field field_v1">
-                                                    <input name="TenLSP" class="field__input" placeholder="Xin mời nhập...">
+                                                    <input name="TenLSP" required class="field__input" value=<?php echo $TenLSP; ?> placeholder="Xin mời nhập...">
+                                                    <input name="MaLSP" type = "hidden"class="field__input" value=<?php echo $MaLSP; ?>">
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Tên Loại Sản Phẩm</span>
                                                     </span>
