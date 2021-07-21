@@ -166,6 +166,7 @@ The above copyright notice and this permission notice shall be included in all c
                                             <input name="file[]" type="file" multiple onchange="onFileSelected(event)">
                                             <?php
                                             if (isset($_POST['down'])) {
+                                                $TenSP          = "";
                                                 if ($_FILES['file']['name'] != NULL) { // Đã chọn file
                                                     $arr = $_FILES['file']['name'];  
                                                     $countfiles = count($_FILES['file']['name']);
@@ -176,7 +177,6 @@ The above copyright notice and this permission notice shall be included in all c
                                                         move_uploaded_file($_FILES['file']['tmp_name'][$i], 'uploads/' . $filename);
                                                     }
                                                 }
-                                                $TenSP          = "";
                                                 $ImgBig         = $arr[0];
                                                 $ImgSmallfisrt  = $arr[1];
                                                 $ImgSmallsecond = $arr[2];
@@ -199,10 +199,17 @@ The above copyright notice and this permission notice shall be included in all c
                                                     $MoTa = $_POST['MoTa'];
                                                 }
                                                 $themsp = $this->model("ProductModel");
-                                                $themsp->ThemSP($TenSP, $ImgBig, $ImgSmallfisrt, $ImgSmallsecond, $ImgSmallthird, $ImgSmallfourth, $ImgSmallfifth, $MoTa, $Gia, $MaLSP, $TenLSP);
-                                                echo "<script type='text/javascript'>
-                                                             window.location = 'http://localhost/Final/Admin/listproduct'
-                                                      </script>";
+                                                if($themsp->CheckSP($TenSP))
+                                                {
+                                                    echo "<script type='text/javascript'>
+                                                    alert('Tên Sản Phẩm Đã Tồn Tại!');
+                                                        </script>";
+                                                }else{
+                                                    $themsp->ThemSP($TenSP, $ImgBig, $ImgSmallfisrt, $ImgSmallsecond, $ImgSmallthird, $ImgSmallfourth, $ImgSmallfifth, $MoTa, $Gia, $MaLSP, $TenLSP);
+                                                    echo "<script type='text/javascript'>
+                                                                 window.location = 'http://localhost/Final/Admin/listproduct'
+                                                          </script>";
+                                                }
                                             }
                                             ?>
                                             <img id="ImgBig" src="../public/img/img_logo/Icon.png" style="width: 300px; height: 300px; margin-left: 30px; margin-top: 20px; border-radius: 20px;">

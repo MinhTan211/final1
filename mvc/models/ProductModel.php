@@ -43,6 +43,10 @@ class ProductModel extends DataBase
         $qr = "SELECT * FROM product";
         return mysqli_query($this->con,$qr);
     }
-    
+
+    public function CheckSP($TenSP){
+        $qr = "SELECT * FROM product WHERE TenSP = '$TenSP'";
+        return mysqli_query($this->con,$qr);
+    }
 }
 ?>
