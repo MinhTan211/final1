@@ -107,6 +107,9 @@
                 <?php
                     $loadsp = $this->model("ProductModel");
                     $data = $loadsp->LoadSP();
+                    $model = $this->model('ProductModel');
+                    include 'LoadData.php';
+                    $data = $model->GetProduct($page, $limit, $pages);
                     while($row =  mysqli_fetch_array($data))
                     {
                         echo "<div class='col-lg-3 col-md-6 col-sm-6'>
@@ -135,12 +138,10 @@
             <div class="shop__last__option">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="shop__pagination">
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#"><span class="arrow_carrot-right"></span></a>
-                        </div>
+                            <?php
+                                $PageName = 'shop';
+                                include 'page.php';
+                            ?>
                     </div>
                 </div>
             </div>
