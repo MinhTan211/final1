@@ -129,19 +129,19 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-lg-6 col-md-6">
                                             <div class="page">
                                                 <label class="field field_v1">
-                                                    <input name="TenSP" class="field__input" placeholder="Xin mời nhập...">
+                                                    <input name="TenSP" class="field__input" placeholder="Xin mời nhập..." required>
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Tên Sản Phẩm</span>
                                                     </span>
                                                 </label>
                                                 <label class="field field_v2">
-                                                    <input name="Gia" class="field__input" placeholder="Xin mời nhập...">
+                                                    <input name="Gia" class="field__input" placeholder="Xin mời nhập..." required>
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Giá</span>
                                                     </span>
                                                 </label>
                                                 <label class="field field_v3">
-                                                    <textarea name="MoTa" class="field__input" placeholder="Xin mời nhập..."></textarea>
+                                                    <textarea name="MoTa" class="field__input" placeholder="Xin mời nhập..." required></textarea>
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Mô Tả</span>
                                                     </span>
@@ -167,12 +167,28 @@ The above copyright notice and this permission notice shall be included in all c
                                             <?php
                                             if (isset($_POST['down'])) {
                                                 $TenSP          = "";
+                                                if (isset($_POST["TenSP"])) {
+                                                    $TenSP = $_POST['TenSP'];
+                                                }
+                                                if (isset($_POST["Gia"])) {
+                                                    $Gia = $_POST['Gia'];
+                                                }
+                                                if (isset($_POST["MoTa"])) {
+                                                    $MoTa = $_POST['MoTa'];
+                                                }
+                                                
                                                 if ($_FILES['file']['name'] != NULL) { // Đã chọn file
-                                                    $arr = $_FILES['file']['name'];  
+                                                    $arr = $_FILES['file']['name'];
+                                                    $arr[0] = $TenSP."_1";
+                                                    $arr[1] = $TenSP."_2";
+                                                    $arr[2] = $TenSP."_3";
+                                                    $arr[3] = $TenSP."_4";
+                                                    $arr[4] = $TenSP."_5";
+                                                    $arr[4] = $TenSP."_6";
                                                     $countfiles = count($_FILES['file']['name']);
                                                     // file hợp lệ, tiến hành upload
                                                     for ($i = 0; $i < $countfiles; $i++) {
-                                                        $filename = $_FILES['file']['name'][$i];
+                                                        $filename = $arr[$i];
                                                         // Upload file
                                                         move_uploaded_file($_FILES['file']['tmp_name'][$i], 'uploads/' . $filename);
                                                     }
@@ -189,26 +205,17 @@ The above copyright notice and this permission notice shall be included in all c
                                                 $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
                                                 $MaLSP          = $ma[1];
                                                 $TenLSP         = $ma[0];
-                                                if (isset($_POST["TenSP"])) {
-                                                    $TenSP = $_POST['TenSP'];
-                                                }
-                                                if (isset($_POST["Gia"])) {
-                                                    $Gia = $_POST['Gia'];
-                                                }
-                                                if (isset($_POST["MoTa"])) {
-                                                    $MoTa = $_POST['MoTa'];
-                                                }
                                                 $themsp = $this->model("ProductModel");
-                                                if($themsp->CheckSP($TenSP))
+                                                if($themsp->CheckSP($TenSP) == 0)
                                                 {
-                                                    echo "<script type='text/javascript'>
-                                                    alert('Tên Sản Phẩm Đã Tồn Tại!');
-                                                        </script>";
-                                                }else{
                                                     $themsp->ThemSP($TenSP, $ImgBig, $ImgSmallfisrt, $ImgSmallsecond, $ImgSmallthird, $ImgSmallfourth, $ImgSmallfifth, $MoTa, $Gia, $MaLSP, $TenLSP);
                                                     echo "<script type='text/javascript'>
                                                                  window.location = 'http://localhost/Final/Admin/listproduct'
                                                           </script>";
+                                                }else{
+                                                    echo "<script type='text/javascript'>
+                                                    alert('Tên Sản Phẩm Đã Tồn Tại!');
+                                                        </script>";
                                                 }
                                             }
                                             ?>
