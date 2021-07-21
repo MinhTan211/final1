@@ -42,5 +42,5 @@ if (!isset($_SESSION)) {
     $Xoa = $this->model('productmodel')->DeleteSP($getId[1])??false;
     echo "<script type='text/javascript'>
                 window.location = 'http://localhost/Final/Admin/listproduct'
-            </script>";
+        </script>";
 ?>
