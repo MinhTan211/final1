@@ -36,14 +36,9 @@ The above copyright notice and this permission notice shall be included in all c
 </head>
 
 <body class="">
-    <script LANGUAGE="JavaScript">
-    function confirmSubmit(User) {
-        var agree = confirm("Bạn có chắc chắn xóa?");
-        return agree;
-    }
-    // 
-    </script>
-    </script>
+    <?php
+     include 'ConfirmDelete.php';
+    ?>
     <div class="wrapper ">
         <div class="sidebar" style="background-color: #f5e0c2;">
             <!--

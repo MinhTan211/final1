@@ -24,5 +24,9 @@ class ProductTypeModel extends DataBase
         $qr = "UPDATE producttype SET TenLSP = '$TenLSP' WHERE MaLSP = '$MaLSP'";
         return mysqli_query($this->con,$qr);
     }
+    public function XoaLSP($MaLSP){
+        $qr = "DELETE FROM producttype WHERE MaLSP = '$MaLSP'";
+        return mysqli_query($this->con,$qr);
+    }
 }
 ?>
