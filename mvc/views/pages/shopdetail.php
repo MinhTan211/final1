@@ -220,8 +220,8 @@
                                 <div class='product__item__text'>";
                                 $id = $row1["MaSP"];
                                 echo "
-                                    <h6><a href='../detail?id=";echo $row1[0]."'>"; echo $row1["TenSP"]."</a></h6>
-                                    <div class='product__item__price'>$32.00</div>
+                                    <h6><a href='./shopdetail?id=";echo $row1[0]."'>"; echo $row1["TenSP"]."</a></h6>
+                                    <div class='product__item__price'>"; echo $row1["Gia"]."</div>
                                     <div class='cart_add'>
                                         <a href='#'>Add to cart</a>
                                     </div>
