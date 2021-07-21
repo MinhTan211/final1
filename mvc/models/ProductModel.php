@@ -38,5 +38,11 @@ class ProductModel extends DataBase
         $qr = "SELECT * FROM product WHERE MaSP = '$id'";
         return mysqli_query($this->con,$qr);
     }
+
+    public function LoadSP(){
+        $qr = "SELECT * FROM product";
+        return mysqli_query($this->con,$qr);
+    }
+    
 }
 ?>
