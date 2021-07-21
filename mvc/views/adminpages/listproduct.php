@@ -35,6 +35,9 @@ The above copyright notice and this permission notice shall be included in all c
 </head>
 
 <body class="">
+    <?php
+        include 'ConfirmDelete.php'
+    ?>
     <div class="wrapper ">
         <div class="sidebar" style="background-color: #f5e0c2;">
             <!--
@@ -158,7 +161,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                     echo $row["MoTa"] .
                                                         "</td>
                                                          <td style='text-align: center; width: 200px;'>
-                                                         <a href='./delete'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
+                                                         <a href='./delete?id=";echo $row[0]."'><button onclick='return confirmSubmit()' class='snip0059'><span class='material-icons' style='font-size: 15px;'>
                                                              delete
                                                              </span></button></a>
                                                          <a href='./edit?id=";echo $row[0]."'><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
