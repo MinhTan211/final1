@@ -23,5 +23,10 @@ class ProductModel extends DataBase
         $qr = "INSERT INTO product(TenSP, ImgBig, ImgSmallfisrt, ImgSmallsecond, ImgSmallthird, ImgSmallfourth, ImgSmallfifth, MoTa, Gia, MaLSP, TenLSP) VALUES ('$TenSP', '$ImgBig', '$ImgSmallfisrt', '$ImgSmallsecond', '$ImgSmallthird', '$ImgSmallfourth', '$ImgSmallfifth', '$MoTa', '$Gia', '$MaLSP', '$TenLSP')";
         return mysqli_query($this->con,$qr);
     }
+
+    public function ThemLSP($TenLSP){
+        $qr = "INSERT INTO producttype(TenLSP) VALUES ('$TenLSP')";
+        return mysqli_query($this->con,$qr);
+    }
 }
 ?>

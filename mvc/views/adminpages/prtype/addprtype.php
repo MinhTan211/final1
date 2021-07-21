@@ -1,25 +1,22 @@
 <?php
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    }
-    else{
-        if(isset($_SESSION["Role"])){
-            switch($_SESSION["Role"]){
-                case 0:
-                    echo "<script type='text/javascript'>
+if (!isset($_SESSION)) {
+    session_start();
+} else {
+    if (isset($_SESSION["Role"])) {
+        switch ($_SESSION["Role"]) {
+            case 0:
+                echo "<script type='text/javascript'>
                             window.location = 'http://localhost/Final/Home/Index'
                         </script>";
-                    break;
-                default:
-                    break;
-            }
+                break;
+            default:
+                break;
         }
-        else
+    } else
         echo "<script type='text/javascript'>
                 window.location = 'http://localhost/Final/Home/Login'
             </script>";
-    }
+}
 ?>
 <!--
 =========================================================
@@ -70,21 +67,31 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p class="card-category"></p>
                             </div>
                             <div class="card-body" style="margin-top: 30px; margin-left: 50px;">
-                                <form style="font-family: Courier New;">
+                                <form style="font-family: Courier New;" method="POST">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="page">
                                                 <label class="field field_v1">
                                                     <input name="TenLSP" class="field__input" placeholder="Xin mời nhập...">
+                                                    <?php
+                                                    $TenLSP = "";
+                                                    if (isset($_POST['up'])  == "POST") {
+                                                        if (isset($_POST["TenLSP"])) {
+                                                            $TenLSP = $_POST['TenLSP'];
+                                                        }
+                                                        $themLSP = $this->model("ProductModel");
+                                                        $themLSP->ThemLSP($TenLSP);
+                                                    }
+                                                    ?>
                                                     <span class="field__label-wrap">
                                                         <span class="field__label">Tên Loại Sản Phẩm</span>
                                                     </span>
                                                 </label>
                                             </div>
                                         </div>
-                                    <button class="btn" style="margin-right: -130px; margin-bottom: -30px; width: 250px;">
-                                        <span class="btn-label">Thêm Loại Sản Phẩm</span>
-                                    </button>
+                                        <button class="btn" name="up" style="margin-right: -130px; margin-bottom: -30px; width: 250px;">
+                                            <span class="btn-label">Thêm Loại Sản Phẩm</span>
+                                        </button>
                                 </form>
                             </div>
                         </div>
