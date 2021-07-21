@@ -47,8 +47,19 @@ class ProductModel extends DataBase
         $qr = "SELECT * FROM product WHERE MaLSP = '$MaLSP'";
         return mysqli_query($this->con,$qr);
     }
+
     public function DeleteSP($MaSP){
         $qr = "DELETE FROM product WHERE MaSP = '$MaSP'";
+        return mysqli_query($this->con,$qr);
+    }
+
+    public function GetProduct1($page, $limit, $pages, $MaLSP){
+        $start = ($page - 1) * $limit;
+        if($page>$pages)
+            $page = $pages;
+        else if($page < 1)
+            $page = 1;
+        $qr = "SELECT * FROM product WHERE MaSP = '$MaLSP' ORDER BY MaSP LIMIT $start, $limit";
         return mysqli_query($this->con,$qr);
     }
 }

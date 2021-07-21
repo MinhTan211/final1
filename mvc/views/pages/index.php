@@ -239,140 +239,44 @@
     <section class="product spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg">
-                            <img src="../public/img/img_produce/banhket.jpg" style="width: 270px; height: 270px;">
-                            <div class="product__label">
-                                <span>VietNam Food</span>
+            <?php
+                    $loadsp = $this->model("ProductModel");
+                    $data = $loadsp->LoadSP();
+                    $model = $this->model('ProductModel');
+                    include 'LoadData.php';
+                    $data = $model->GetProduct($page, $limit, $pages);
+                    while($row =  mysqli_fetch_array($data))
+                    {
+                        echo "<div class='col-lg-3 col-md-6 col-sm-6'>
+                        <div class='product__item'>
+                            <div class='product__item__pic set-bg'>
+                                <a href = './shopdetail?id=";echo $row[0]."'><img src='../uploads/";
+                                echo $row["ImgBig"]."' style='width: 270px; height: 270px;'><a>
+                                <div class='product__label'>
+                                    <span>";
+                                echo $row["TenLSP"]."</span>
+                                </div>
+                            </div>
+                            <div class='product__item__text'>
+                                <h6><a href='#'>";
+                                echo $row["TenSP"]."</a></h6>
+                                <div class='product__item__price'>"; echo $row["Gia"]." VNĐ</div>
+                                <div class='cart_add'>
+                                    <a href='#'>Thêm Giỏ Hàng</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Bánh Kẹp</a></h6>
-                            <div class="product__item__price">32.000 VND</div>
-                            <div class="cart_add">
-                                <a href="#">Thêm Giỏ Hàng</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg">
-                            <img src="../public/img/img_produce/banhtrangcuon.jpg" style="width: 270px; height: 270px;">
-                            <div class="product__label">
-                                <span>VietNam Food</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Bánh Tráng Cuốn</a></h6>
-                            <div class="product__item__price">25.000 VND</div>
-                            <div class="cart_add">
-                                <a href="#">Thêm Giỏ Hàng</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg">
-                            <img src="../public/img/img_produce/kem.jpg" style="width: 270px; height: 270px;">
-                            <div class="product__label">
-                                <span>Europe Food</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Ice Dream</a></h6>
-                            <div class="product__item__price">31.000 VND</div>
-                            <div class="cart_add">
-                                <a href="#">Thêm Giỏ Hàng</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg">
-                            <img src="../public/img/img_produce/humberger.jpg" style="width: 270px; height: 270px;">
-                            <div class="product__label">
-                                <span>Fast Food</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Hamberger</a></h6>
-                            <div class="product__item__price">25.000 VNĐ</div>
-                            <div class="cart_add">
-                                <a href="#">Thêm Giỏ Hàng</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg">
-                            <img src="../public/img/img_produce/noodel.jpg" style="width: 270px; height: 270px;">
-                            <div class="product__label">
-                                <span>Europe Food</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Noodel Seafood</a></h6>
-                            <div class="product__item__price">45.000 VND</div>
-                            <div class="cart_add">
-                                <a href="#">Thêm Giỏ Hàng</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg">
-                            <img src="../public/img/img_produce/soda.jpg" style="width: 270px; height: 270px;">
-                            <div class="product__label">
-                                <span>Drink</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Soda</a></h6>
-                            <div class="product__item__price">14.000 VND</div>
-                            <div class="cart_add">
-                                <a href="#">Thêm Giỏ Hàng</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg">
-                            <img src="../public/img/img_produce/tea.jpg" style="width: 270px; height: 270px;">
-                            <div class="product__label">
-                                <span>Drink</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Tea Green</a></h6>
-                            <div class="product__item__price">32.000 VND</div>
-                            <div class="cart_add">
-                                <a href="#">Thêm Giỏ Hàng</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg">
-                            <img src="../public/img/img_produce/lemon.jpg" style="width: 270px; height: 270px;">
-                            <div class="product__label">
-                                <span>Drink</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Soda Lemon</a></h6>
-                            <div class="product__item__price">45.000 VND</div>
-                            <div class="cart_add">
-                                <a href="#">Thêm Giỏ Hàng</a>
-                            </div>
-                        </div>
+                    </div>";
+                    }
+                ?>
+            </div>
+            <div class="shop__last__option">
+                <div class="row">
+                    <div style="margin-left: -80px;" class="col-lg-6 col-md-6 col-sm-6">
+                            <?php
+                                $PageName = 'shop';
+                                include 'page.php';
+                            ?>
                     </div>
                 </div>
             </div>

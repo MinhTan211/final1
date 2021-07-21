@@ -89,13 +89,24 @@
                 <div class="row">
                     <div class="col-lg-7 col-md-7">
                         <div class="shop__option__search">
-                            <form action="#">
-                                <select>
-                                    <option value="">Categories</option>
-                                    <option value="">Red Velvet</option>
-                                    <option value="">Cup Cake</option>
-                                    <option value="">Biscuit</option>
+                            <form method="POST">
+                                <select name="MaLSP" onchange="this.form.submit()">
+                                <?php
+                                    $getpr  = $this->model("ProductModel");
+                                    $data = $getpr->Getpr();
+                                    while ($row =  mysqli_fetch_array($data)) {
+                                        echo "<option value='";
+                                        echo $row["TenLSP"]."/".$row["MaLSP"]."' name='TenLSP'>";
+                                        echo "<button type='submit' name='up'>".$row["TenLSP"];
+                                        echo "</button></option>";
+                                    }
+                                    $ArrayMaLSP          = $_POST['MaLSP'];
+                                    $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
+                                    $MaLSP          = $ma[1];
+                                    $TenLSP         = $ma[0];
+                                ?>
                                 </select>
+                                
                                 <input type="text" placeholder="Search">
                                 <button style="margin-top: 0px;" type="submit"><i class="fa fa-search"></i></button>
                             </form>
@@ -106,10 +117,15 @@
             <div class="row">
                 <?php
                     $loadsp = $this->model("ProductModel");
-                    $data = $loadsp->LoadSP();
-                    $model = $this->model('ProductModel');
-                    include 'LoadData.php';
-                    $data = $model->GetProduct($page, $limit, $pages);
+                    if($_SERVER["REQUEST_METHOD"] == "POST")
+                    {
+                        $ArrayMaLSP          = $_POST['MaLSP'];
+                        $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
+                        $MaLSP          = $ma[1];
+                        $data =  $loadsp->Show($MaLSP);
+                    }else{
+                        $data = $loadsp->LoadSP();
+                    }
                     while($row =  mysqli_fetch_array($data))
                     {
                         echo "<div class='col-lg-3 col-md-6 col-sm-6'>
@@ -137,11 +153,7 @@
             </div>
             <div class="shop__last__option">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                            <?php
-                                $PageName = 'shop';
-                                include 'page.php';
-                            ?>
+                    <div style="margin-left: -80px;" class="col-lg-6 col-md-6 col-sm-6">      
                     </div>
                 </div>
             </div>
