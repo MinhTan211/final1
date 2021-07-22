@@ -129,6 +129,7 @@
                                         echo "<option value='";
                                         echo $row["TenLSP"] . "/" . $row["MaLSP"] . "' name='TenLSP'>";
                                         echo $row["TenLSP"] . "</button></option>";
+                                        $tui = $row[0];
                                     }
                                     $ArrayMaLSP          = $_POST['MaLSP'];
                                     $ma = explode("/", filter_var(trim($ArrayMaLSP, "/")));
@@ -188,7 +189,7 @@
                                 <div class="dropup">
                                 <input type="text" id="search" name="search" placeholder="Search" class="dropbtn">
                                 <div class="dropup-content" style="margin-left: 130px;">
-                                    <a id="search_result" href="#"></a>
+                                    <div id="search_result"></div>
                                 </div>
                                 </div>
                                 <button name="up" style="margin-top: 0px;" type="submit"><i class="fa fa-search"></i></button>
