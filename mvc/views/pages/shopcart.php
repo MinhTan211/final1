@@ -101,6 +101,7 @@
     <section class="shopping-cart spad">
         <div class="container">
             <div class="row">
+                <form></form>
                 <div class="about__text">
                     <div class="section-title">
                         <span style="font-size: 50px;">GIỎ HÀNG CỦA BẠN</span>
@@ -135,16 +136,20 @@
                                                         <h6>";echo $row[1]."</h6>
                                                     </div>
                                                 </td>
+                                                <form action='cart' method ='GET'>
                                                 <td class='quantity__item'>
                                                     <div class='quantity'>
                                                         <div class='pro-qty'>
-                                                            <input type='text' value='";echo $_SESSION['cart'][$id]['SoLuong']."'>
+                                                            <input type = 'hidden' name='action' value='edit'/>   
+                                                            <input type = 'hidden' name='id' value='".$id."'/> 
+                                                            <input name = 'SoLuong' type='text' value='";echo $_SESSION['cart'][$id]['SoLuong']."'>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class='cart__price'>"; echo $row[9]*$_SESSION['cart'][$id]['SoLuong']."</td>
-                                                <td class='cart__close'><button style ='margin-right: -100px; margin-bottom: 30px' onclick='return Remove(".$id.")'><span class='material-icons'>delete</span></button>
-                                                </td>
+                                                <td class='cart__close'><button style ='margin-right: -50px; margin-bottom: 30px' onclick='return Remove(".$id.")'><span class='material-icons'>delete</span></button>
+                                                <button type = 'submit' style='margin-right: -100px; padding-left: 40px'><span <span class='material-icons'>update</span></span></button></td>
+                                                </form>
                                             </tr>";
                                         }
                                     }
@@ -167,8 +172,8 @@
                 </div>
 
                 <!-- Check Out-->
-
                 <div class="col-lg-4">
+                <form>
                     <div class="cart__total">
                         <h6 style="text-align: center; font-size: 25px;">Hóa Đơn</h6>
                         <ul>
@@ -191,6 +196,7 @@
                         </ul>
                         <button name="ThanhToan" onclick = "return ThanhToan(<?php echo $Tong;?>)" type ="submit" class="primary-btn">Thanh Toán</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
