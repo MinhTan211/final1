@@ -41,9 +41,9 @@
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> -->
     <!-- Header Section Begin -->
     <header class="header">
         <div class="container">
@@ -212,11 +212,9 @@
         <div class="container">
             <div class="row">
             <?php
-                    $loadsp = $this->model("ProductModel");
-                    $data = $loadsp->LoadSP();
-                    $model = $this->model('ProductModel');
+                    $loadsp = $this->model('ProductModel');
                     include 'LoadData.php';
-                    $data = $model->GetProduct($page, $limit, $pages);
+                    $data = $loadsp->LoadSP($page, $limit, $pages);
                     while($row =  mysqli_fetch_array($data))
                     {
                         echo "<div class='col-lg-3 col-md-6 col-sm-6'>

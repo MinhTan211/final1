@@ -16,7 +16,7 @@
     $page = 1;                                                   
     else
     $page=$getpage[1];
-    $count = $model->GetCount();
+    $count = $loadsp->GetCount();
     $limit = 8;
     $pages = ceil($count[0]/$limit);
 ?>

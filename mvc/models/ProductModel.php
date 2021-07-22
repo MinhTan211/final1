@@ -33,8 +33,13 @@ class ProductModel extends DataBase
         return mysqli_query($this->con,$qr);
     }
 
-    public function LoadSP(){
-        $qr = "SELECT * FROM product";
+    public function LoadSP($page, $limit, $pages){
+        $start = ($page - 1) * $limit;
+        if($page>$pages)
+            $page = $pages;
+        else if($page < 1)
+            $page = 1;
+        $qr = "SELECT * FROM product ORDER BY MaSP LIMIT $start, $limit";
         return mysqli_query($this->con,$qr);
     }
 
@@ -48,13 +53,28 @@ class ProductModel extends DataBase
         return mysqli_query($this->con,$qr);
     }
 
+    public function LoadMaLSP($MaLSP, $page, $limit, $pages){
+        $start = ($page - 1) * $limit;
+        if($page>$pages)
+            $page = $pages;
+        else if($page < 1)
+            $page = 1;
+        $qr = "SELECT * FROM product WHERE MaLSP = '$MaLSP' ORDER BY MaLSP LIMIT $start, $limit";
+        return mysqli_query($this->con,$qr);
+    }
+
     public function DeleteSP($MaSP){
         $qr = "DELETE FROM product WHERE MaSP = '$MaSP'";
         return mysqli_query($this->con,$qr);
     }
 
-    public function SearchSP($TenSP){
-        $qr = "SELECT * FROM product WHERE TenSP LIKE '%$TenSP%'";
+    public function SearchSP($TenSP, $page, $limit, $pages){
+        $start = ($page - 1) * $limit;
+        if($page>$pages)
+            $page = $pages;
+        else if($page < 1)
+            $page = 1;
+        $qr = "SELECT * FROM product WHERE TenSP LIKE '%$TenSP%' ORDER BY MaSP LIMIT $start, $limit";
         return mysqli_query($this->con,$qr);
     }
     public function LiveSearchSP($TenSP){
