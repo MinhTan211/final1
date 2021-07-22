@@ -97,8 +97,7 @@
                                     while ($row =  mysqli_fetch_array($data)) {
                                         echo "<option value='";
                                         echo $row["TenLSP"]."/".$row["MaLSP"]."' name='TenLSP'>";
-                                        echo "<button type='submit' name='up'>".$row["TenLSP"];
-                                        echo "</button></option>";
+                                        echo $row["TenLSP"]."</button></option>";
                                     }
                                     $ArrayMaLSP          = $_POST['MaLSP'];
                                     $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
@@ -106,9 +105,8 @@
                                     $TenLSP         = $ma[0];
                                 ?>
                                 </select>
-                                
-                                <input type="text" placeholder="Search">
-                                <button style="margin-top: 0px;" type="submit"><i class="fa fa-search"></i></button>
+                                <input type="text" name="search" placeholder="Search">
+                                <button name="up" style="margin-top: 0px;" type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -117,8 +115,12 @@
             <div class="row">
                 <?php
                     $loadsp = $this->model("ProductModel");
-                    if($_SERVER["REQUEST_METHOD"] == "POST")
-                    {
+                    if(isset($_POST['up'])){
+                        if (isset($_POST["search"])) {
+                            $TenSP = $_POST['search'];
+                        }
+                        $data = $loadsp->SearchSP($TenSP);
+                    }elseif(isset($_POST['MaLSP'])){
                         $ArrayMaLSP          = $_POST['MaLSP'];
                         $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
                         $MaLSP          = $ma[1];
