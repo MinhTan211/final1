@@ -60,7 +60,7 @@
             else
                 return agree;
         }
-        function clear(){
+        function clearcart(){
             var agree = confirm("Làm mới toàn bộ giỏ hàng?");
             if(agree)
                 location.href = 'cart?action=delete';
@@ -172,7 +172,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
-                                <button style="background-color: black; margin-right: 35px; margin-top: -5px;" type = "button" onclick="return clear()"><i class="fa fa-spinner"></i>Làm mới giỏ hàng</button>
+                                <button style="background-color: black; margin-right: 35px; margin-top: -5px;" type = "button" onclick="return clearcart()"><i class="fa fa-spinner"></i>Làm mới giỏ hàng</button>
                             </div>
                         </div>
                     </div>
@@ -201,9 +201,9 @@
                             }                        
                         ?>
                         </ul>
-                        <button name="ThanhToan" onclick = "return ThanhToan(<?php echo $Tong;?>)" type ="submit" class="primary-btn">Thanh Toán</button>
                     </div>
                     </form>
+                    <button name="ThanhToan" onclick = "return ThanhToan(<?php echo $Tong;?>)" type ="submit" class="primary-btn">Thanh Toán</button>
                 </div>
             </div>
         </div>
