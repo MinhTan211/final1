@@ -153,10 +153,10 @@
                                                         </div>
                                                     </div>
                                                 </td>
+                                                </form>
                                                 <td class='cart__price'>"; echo $row[9]*$_SESSION['cart'][$id]['SoLuong']."</td>
                                                 <td class='cart__close'><button style ='margin-right: -50px; margin-bottom: 30px' onclick='return Remove(".$id.")'><span class='material-icons'>delete</span></button>
                                                 <button type = 'submit' style='margin-right: -100px; padding-left: 40px'><span <span class='material-icons'>update</span></span></button></td>
-                                                </form>
                                             </tr>";
                                         }
                                     }

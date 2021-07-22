@@ -22,9 +22,8 @@
     $getAdd = explode("=",filter_var(trim($_SERVER["REQUEST_URI"], "/")));
     $getAdd[1] = explode("&", $getAdd[1]);
     $action = $getAdd[1][0];
-    if($action == "delete"){
+    if($action == "delete")
         unset($_SESSION['cart']);
-    }
     else{
         $getAdd[2] = explode("&", $getAdd[2]);
         $id = $getAdd[2][0];
@@ -57,9 +56,6 @@
                             unset($_SESSION['cart'][$id]);
                         else
                             $_SESSION['cart'][$id]['SoLuong'] = $SL;
-                        echo "<script type='text/javascript'>
-                            window.location = 'http://localhost/Final/Home/shopcart'
-                            </script>";
                     }
                     else
                         echo "<script type='text/javascript'>
@@ -67,12 +63,8 @@
                             </script>";
                     break;
                 case 'remove':
-                    if(isset($_SESSION['cart'][$id])){
+                    if(isset($_SESSION['cart'][$id]))
                         unset($_SESSION['cart'][$id]);
-                        echo "<script type='text/javascript'>
-                            window.location = 'http://localhost/Final/Home/shopcart'
-                        </script>";
-                    }
                     else
                         echo "<script type='text/javascript'>
                             alert('Sản phẩm không tồn tại trong giỏ hàng');

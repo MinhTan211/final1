@@ -141,11 +141,11 @@
                                 </div>
                             </div>
                             <div class='product__item__text'>
-                                <h6><a href='#'>";
+                                <h6><a href='./shopdetail?id=";echo $row[0]."'>";
                                 echo $row["TenSP"]."</a></h6>
                                 <div class='product__item__price'>"; echo $row["Gia"]." VNĐ</div>
                                 <div class='cart_add'>
-                                    <a href='#'>Thêm Giỏ Hàng</a>
+                                    <a href='./cart?action=add&id=".$row[0]."&SoLuong=1'>Thêm Giỏ Hàng</a>
                                 </div>
                             </div>
                         </div>
