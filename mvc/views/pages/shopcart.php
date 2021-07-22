@@ -63,7 +63,7 @@
         function clear(){
             var agree = confirm("Làm mới toàn bộ giỏ hàng?");
             if(agree)
-                location.href = 'cart?action=delete";
+                location.href = 'cart?action=delete';
             else
                 return agree;
         }
@@ -172,7 +172,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
-                                <button type = "button" onclick="return clear()"><i class="fa fa-spinner"></i>Làm mới giỏ hàng</button>
+                                <button style="background-color: black; margin-right: 35px; margin-top: -5px;" type = "button" onclick="return clear()"><i class="fa fa-spinner"></i>Làm mới giỏ hàng</button>
                             </div>
                         </div>
                     </div>
