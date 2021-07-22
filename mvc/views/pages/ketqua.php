@@ -4,8 +4,8 @@
     $data = $loadsp->LiveSearchSP($_POST['query']);
     if (mysqli_num_rows($data) > 0) {
         while ($row = mysqli_fetch_array($data)) {
-        echo $row[1]. "<br/>";
-        echo "<a href='./shopdetail?id=";echo $row[0]."'>";
+          echo "<a href='./shopdetail?id=";echo $row[0]."'>";
+          echo $row[1]. "<br/>";
       }
     } else {
       echo "

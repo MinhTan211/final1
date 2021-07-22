@@ -139,13 +139,25 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Giới Tính<span>*</span></p>
-                                        <input style="width: 15px; height: 15px;" type="radio" name="gader" value="Nam"><span class="material-icons">
-                                            female
-                                            </span>
-                                        <input style="width: 15px; height: 15px; margin-left: 15px; margin-top: 15px;" type="radio" name="gader" value="Nam"><span class="material-icons">
-                                            male
+                                    <p>Giới Tính<span>*</span></p>
+                                        <?php
+                                            if($customer[5] == 1)
+                                            {
+                                                echo "<input style='width: 15px; height: 15px;' type='radio' name='gander' value='Nu'><span class='material-icons'>
+                                                female
                                                 </span>
+                                            <input style='width: 15px; height: 15px; margin-left: 15px; margin-top: 15px;' type='radio' name='gander' value='Nam' checked><span class='material-icons'>
+                                                male
+                                                </span>";
+                                            }else{
+                                                echo "<input style='width: 15px; height: 15px;' type='radio' name='gander' value='Nu' checked><span class='material-icons'>
+                                                female
+                                                </span>
+                                            <input style='width: 15px; height: 15px; margin-left: 15px; margin-top: 15px;' type='radio' name='gander' value='Nam' ><span class='material-icons'>
+                                                male
+                                                </span>";
+                                            }
+                                        ?>   
                                     </div>
                                 </div>
                             </div>
@@ -189,6 +201,15 @@
                             }
                             if (isset($_POST["Birthday"])) {
                                 $Birthday = $_POST['Birthday'];
+                            }
+                            if(isset($_POST['gander'])){
+                                $gender1 = $_POST['gander'];
+                                if($gender1 == 'Nam')
+                                {
+                                    $Gender = 1;
+                                }else{
+                                    $Gender = 0;
+                                }
                             }
                             if(!empty($ImgCus) && !empty($customer[8]))
                                 if(file_exists('uploads/'.$customer[8]))
