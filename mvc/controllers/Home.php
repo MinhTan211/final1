@@ -39,5 +39,8 @@ class Home extends Controller{
     {
         $this->viewlogup("logout");
     }
+    function cart(){
+        $this->view("cart");
+    }
 }
 ?>

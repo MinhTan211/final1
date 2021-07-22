@@ -138,12 +138,16 @@
                         <h5><?php echo $row["Gia"]?> VNĐ</h5>
                         <p><?php echo $row["MoTa"] ?></p>
                         <div class="product__details__option" style="margin-top: 148px;">
+                        <form action="cart" method = "GET">
+                            <input name = "action" type="hidden" value="add">
+                            <input name = "id" type="hidden" value="<?php echo $row["MaSP"];?>">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="2">
+                                    <input name = "SoLuong" type="text" value="1">
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                            <button type = "submit" class="primary-btn">Thêm Vào Giỏ Hàng</button>
+                        </form>
                         </div>
                     </div>
                 </div>
