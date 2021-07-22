@@ -73,7 +73,7 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="#">
+                <form action="#" method="$_POST">
                     <div class="row">
                         <div class="about__text">
                             <div class="section-title">
@@ -91,8 +91,6 @@
                                 </span></a>
                             <div class="vertical-menu" style="margin-top: 30px;">
                                 <a href="#" class="active">Cập Nhật Thông Tin</a>
-                                <a href="#"> Đơn Mua</a>
-                                <a href="#">Vocher</a>
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-5">

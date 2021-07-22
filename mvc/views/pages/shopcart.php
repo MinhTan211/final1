@@ -167,7 +167,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
-                                <a href="./shop">Tiếp Tục Mua Sắm</a>
+                                <a style="background-color: black; color: blanchedalmond;" href="./shop">Tiếp Tục Mua Sắm</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
@@ -203,7 +203,7 @@
                         </ul>
                     </div>
                     </form>
-                    <button name="ThanhToan" onclick = "return ThanhToan(<?php echo $Tong;?>)" type ="submit" class="primary-btn">Thanh Toán</button>
+                    <button name="ThanhToan" style="width: 360px; background-color: black;" onclick = "return ThanhToan(<?php echo $Tong;?>)" type ="submit" class="primary-btn">Thanh Toán</button>
                 </div>
             </div>
         </div>
