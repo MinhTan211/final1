@@ -44,8 +44,13 @@
         $model = $this->model('AcountModel');
         $model->XoaTK($getidXoa[1])??false;
         $Role = $model->GetVaiTro($getidXoa[1])->fetch_row();
-        if($Role==0)
+        if($Role==0){
+            $customer = $this->model('CustomerModel')->ChitietKH($getidXoa[1])->fetch_row();
+            if(!empty($customer[8]))
+                if(file_exists('uploads/'.$customer[8]))
+                    unlink('uploads/'.$customer[8]);
             $this->model('CustomerModel')->XoaKH($getidXoa[1])??false;
+        }
         echo "<script type='text/javascript'>
                     window.location = 'http://localhost/Final/Admin/listaccoun'
                     </script>";

@@ -190,12 +190,14 @@
                             if (isset($_POST["Birthday"])) {
                                 $Birthday = $_POST['Birthday'];
                             }
-
+                            if(!empty($ImgCus) && !empty($customer[8]))
+                                if(file_exists('uploads/'.$customer[8]))
+                                    unlink('uploads/'.$customer[8]);
                             if ($_FILES['file']['name'] != NULL) { // Đã chọn file
                                     $path = "uploads/";
                                 $tmp_name = $_FILES['file']['tmp_name'];
                                 $arr = $_FILES['file']['name'];
-                                $arr = $TenKH."_1.jpg";
+                                $arr = $customer[7]."_1.jpg";
                                 move_uploaded_file($tmp_name,$path.$arr);
                             }
                             $ImgCus = $arr;
