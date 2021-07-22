@@ -167,6 +167,8 @@ The above copyright notice and this permission notice shall be included in all c
                                             <?php
                                             if (isset($_POST['down'])) {
                                                 $TenSP          = "";
+                                                $MoTa           = "";
+                                                $Gia            = "";
                                                 if (isset($_POST["TenSP"])) {
                                                     $TenSP = $_POST['TenSP'];
                                                 }
@@ -199,8 +201,6 @@ The above copyright notice and this permission notice shall be included in all c
                                                 $ImgSmallthird  = $arr[3];
                                                 $ImgSmallfourth = $arr[4];
                                                 $ImgSmallfifth  = $arr[5];
-                                                $MoTa           = "";
-                                                $Gia            = "";
                                                 $ArrayMaLSP          = $_POST['MaLSP'];
                                                 $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
                                                 $MaLSP          = $ma[1];

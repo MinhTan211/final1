@@ -198,18 +198,19 @@
             <div class="row">
                 <?php
                 $loadsp = $this->model("ProductModel");
+                include 'LoadData.php';
                 if (isset($_POST['up'])) {
                     if (isset($_POST["search"])) {
                         $TenSP = $_POST['search'];
                     }
-                    $data = $loadsp->SearchSP($TenSP);
+                    $data = $loadsp->SearchSP($TenSP, $page, $limit, $pages);
                 } elseif (isset($_POST['MaLSP'])) {
                     $ArrayMaLSP          = $_POST['MaLSP'];
                     $ma = explode("/", filter_var(trim($ArrayMaLSP, "/")));
                     $MaLSP          = $ma[1];
-                    $data =  $loadsp->Show($MaLSP);
+                    $data =  $loadsp->LoadMaLSP($MaLSP, $page, $limit, $pages);
                 } else {
-                    $data = $loadsp->LoadSP();
+                    $data = $loadsp->LoadSP($page, $limit, $pages);
                 }
                 while ($row =  mysqli_fetch_array($data)) {
                     echo "<div class='col-lg-3 col-md-6 col-sm-6'>
@@ -238,6 +239,10 @@
                 }
                 ?>
             </div>
+            <?php
+                $PageName = 'shop';
+                include 'page.php';
+            ?>
             <div class="shop__last__option">
                 <div class="row">
                     <div style="margin-left: -80px;" class="col-lg-6 col-md-6 col-sm-6">
