@@ -44,13 +44,12 @@
                 if(isset($_SESSION['cart'][$id]))
                     $_SESSION['cart'][$id]['SoLuong']+=$SL;
                 else
-                    $_SESSION['cart'][$id]=array("SoLuong"=>$SL, "Gia"=>$SanPham[9]);
-                }
+                    $_SESSION['cart'][$id]=array("SoLuong"=>$SL, "Gia"=>$SanPham[9], "TenSP" =>$SanPham[1]);
                 break;
             case 'edit':
                 if(isset($_SESSION['cart'][$id])){
                     if($SL==0)
-                        $_SESSION['cart'][$id].unset();
+                        unset($_SESSION['cart'][$id]);
                     else
                         $_SESSION['cart'][$id]['SoLuong'] = $SL;
                 }
@@ -60,9 +59,8 @@
                         </script>";
                 break;
             case 'remove':
-                if(isset($_SESSION['cart'][$id])){
-                    $_SESSION['cart'][$id].unset();
-                }
+                if(isset($_SESSION['cart'][$id]))
+                    unset($_SESSION['cart'][$id]);
                 else
                     echo "<script type='text/javascript'>
                         alert('Sản phẩm không tồn tại trong giỏ hàng');

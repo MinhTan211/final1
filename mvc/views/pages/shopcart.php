@@ -91,82 +91,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img style="width: 60px; height: 60px;" src="../public/img/img_introduce/BanhTrangTronv.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Bánh Tráng trộn</h6>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 30.00</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img style="width: 60px; height: 60px;" src="../public/img/img_introduce/hamberger.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Hamberger</h6>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 32.50</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img style="width: 60px; height: 60px;" src="../public/img/img_introduce/tea.png" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Milk Tea</h6>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 47.00</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img style="width: 60px; height: 60px;" src="../public/img/img_produce/banhket.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Bánh Két</h6>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 30.00</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
+                                <?php
+                                    $model = $this->model('ProductModel');
+                                    if(!isset($_SESSION['cart']))
+                                        echo '<tr><p>Không có sản phẩm trong giỏ hàng</p></tr>';
+                                    else{
+                                        foreach($_SESSION['cart'] as $id => $value){
+                                            $row = $model->ChitietSP($id)->fetch_row();
+                                        }
+                                    //     echo '<tr>
+                                    //     <td class="product__cart__item">
+                                    //         <div class="product__cart__item__pic">
+                                    //             <img style="width: 60px; height: 60px;" src="../public/img/img_introduce/BanhTrangTronv.jpg" alt="">
+                                    //         </div>
+                                    //         <div class="product__cart__item__text">
+                                    //             <h6>Bánh Tráng trộn</h6>
+                                    //         </div>
+                                    //     </td>
+                                    //     <td class="quantity__item">
+                                    //         <div class="quantity">
+                                    //             <div class="pro-qty">
+                                    //                 <input type="text" value="1">
+                                    //             </div>
+                                    //         </div>
+                                    //     </td>
+                                    //     <td class="cart__price">$ 30.00</td>
+                                    //     <td class="cart__close"><span class="icon_close"></span></td>
+                                    // </tr>';
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
