@@ -24,10 +24,10 @@
     $getAdd[2] = explode("&", $getAdd[2]);
     $getAdd[3] = explode("&", $getAdd[3]);
     $id = $getAdd[2][0];
-    if(empty($getAdd[3][1]))
+    if(empty($getAdd[3][0]))
         $SL = 1;
     else
-        $SL = $getAdd[3][1];
+        $SL = $getAdd[3][0];
     if($SL<0)
         $SL = 0;
     $action = $getAdd[1][0];
