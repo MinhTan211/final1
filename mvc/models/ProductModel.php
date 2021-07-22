@@ -57,5 +57,9 @@ class ProductModel extends DataBase
         $qr = "SELECT * FROM product WHERE TenSP LIKE '%$TenSP%'";
         return mysqli_query($this->con,$qr);
     }
+    public function LiveSearchSP($TenSP){
+        $qr = "SELECT * FROM product WHERE TenSP LIKE '%$TenSP%' LIMIT 3";
+        return mysqli_query($this->con,$qr);
+    }
 }
 ?>

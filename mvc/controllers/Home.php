@@ -45,5 +45,8 @@ class Home extends Controller{
     function bill(){
         $this->view("bill");
     }
+    function ketqua(){
+        $this->view("ketqua");
+    }
 }
 ?>

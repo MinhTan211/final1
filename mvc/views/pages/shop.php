@@ -10,8 +10,10 @@
     <title>Cake | Template</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css" type="text/css">
@@ -57,9 +59,12 @@
                                 include 'ButtonLogout.php';
                             ?>
                             <li>
-                                <a href="./shopcart"><img src="../public/img/icon/bag.png" style="height: 25px;"> <span>0</span> Cart: <span>$0.00</span></a>
+                                <a href="./shopcart"><img src="../public/img/icon/bag.png" style="height: 25px;">
+                                    <span>0</span> Cart: <span>$0.00</span></a>
                             </li>
-                            <a href="./informationPersonal" style="padding-left: 20px;"><img src="../public/img/img_logo/logo1.png" style="height: 40px; width: 40px;"><label style="margin-left: 10px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: white;">TT.LT</label></a>
+                            <a href="./informationPersonal" style="padding-left: 20px;"><img
+                                    src="../public/img/img_logo/logo1.png" style="height: 40px; width: 40px;"><label
+                                    style="margin-left: 10px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: white;">TT.LT</label></a>
                         </ul>
                     </nav>
                 </div>
@@ -83,6 +88,36 @@
     <!-- Breadcrumb End -->
 
     <!-- Shop Section Begin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#search").keyup(function() {
+            var query = $(this).val();
+            if (query != "") {
+                $.ajax({
+                    url: 'ketqua',
+                    method: 'POST',
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#search_result').html(data);
+                        $('#search_result').css('display', 'block');
+
+                        $("#live_search").focusout(function() {
+                            $('#search_result').css('display', 'none');
+                        });
+                        $("#live_search").focusin(function() {
+                            $('#search_result').css('display', 'block');
+                        });
+                    }
+                });
+            } else {
+                $('#search_result').css('display', 'none');
+            }
+        });
+    });
+    </script>
     <section class="shop spad" style="margin-top: -50px; margin-left: -30px;">
         <div class="container">
             <div class="shop__option">
@@ -91,7 +126,7 @@
                         <div class="shop__option__search">
                             <form method="POST">
                                 <select name="MaLSP" onchange="this.form.submit()">
-                                <?php
+                                    <?php
                                     $getpr  = $this->model("ProductModel");
                                     $data = $getpr->Getpr();
                                     while ($row =  mysqli_fetch_array($data)) {
@@ -105,8 +140,10 @@
                                     $TenLSP         = $ma[0];
                                 ?>
                                 </select>
-                                <input type="text" name="search" placeholder="Search">
-                                <button name="up" style="margin-top: 0px;" type="submit"><i class="fa fa-search"></i></button>
+                                <input type="text" id="search" name="search" placeholder="Search">
+                                <div id="search_result"></div>
+                                <button name="up" style="margin-top: 0px;" type="submit"><i
+                                        class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -155,7 +192,7 @@
             </div>
             <div class="shop__last__option">
                 <div class="row">
-                    <div style="margin-left: -80px;" class="col-lg-6 col-md-6 col-sm-6">      
+                    <div style="margin-left: -80px;" class="col-lg-6 col-md-6 col-sm-6">
                     </div>
                 </div>
             </div>
@@ -180,9 +217,11 @@
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="../public/img/img_logo/logo1.png" style="height: 150px; width: 150px;" alt=""></a>
+                            <a href="#"><img src="../public/img/img_logo/logo1.png" style="height: 150px; width: 150px;"
+                                    alt=""></a>
                         </div>
-                        <p>Chúng tôi cung cấp cho bạn với ngon thức ăn nhanh với công thức nấu ăn của riêng chúng tôi, giúp bạn thưởng thức những món ăn ngon nhất.</p>
+                        <p>Chúng tôi cung cấp cho bạn với ngon thức ăn nhanh với công thức nấu ăn của riêng chúng tôi,
+                            giúp bạn thưởng thức những món ăn ngon nhất.</p>
                         <div class="footer__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -211,10 +250,11 @@
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
                             <script>
-                                document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                             </script>
                             All rights reserved | This template is made with
-                            <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib & FF.TL</a>
+                            <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                target="_blank">Colorlib & FF.TL</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
