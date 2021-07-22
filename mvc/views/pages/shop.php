@@ -10,10 +10,8 @@
     <title>Cake | Template</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css" type="text/css">
@@ -56,15 +54,13 @@
                             <li><a href="./trademark">Thương Hiệu</a></li>
                             <li class="active"><a href="./shop">Đặt Hàng</a></li>
                             <?php
-                                include 'ButtonLogout.php';
+                            include 'ButtonLogout.php';
                             ?>
                             <li>
                                 <a href="./shopcart"><img src="../public/img/icon/bag.png" style="height: 25px;">
                                     <span>0</span> Cart: <span>$0.00</span></a>
                             </li>
-                            <a href="./informationPersonal" style="padding-left: 20px;"><img
-                                    src="../public/img/img_logo/logo1.png" style="height: 40px; width: 40px;"><label
-                                    style="margin-left: 10px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: white;">TT.LT</label></a>
+                            <a href="./informationPersonal" style="padding-left: 20px;"><img src="../public/img/img_logo/logo1.png" style="height: 40px; width: 40px;"><label style="margin-left: 10px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: white;">TT.LT</label></a>
                         </ul>
                     </nav>
                 </div>
@@ -90,33 +86,33 @@
     <!-- Shop Section Begin -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $("#search").keyup(function() {
-            var query = $(this).val();
-            if (query != "") {
-                $.ajax({
-                    url: 'ketqua',
-                    method: 'POST',
-                    data: {
-                        query: query
-                    },
-                    success: function(data) {
-                        $('#search_result').html(data);
-                        $('#search_result').css('display', 'block');
-
-                        $("#live_search").focusout(function() {
-                            $('#search_result').css('display', 'none');
-                        });
-                        $("#live_search").focusin(function() {
+        $(document).ready(function() {
+            $("#search").keyup(function() {
+                var query = $(this).val();
+                if (query != "") {
+                    $.ajax({
+                        url: 'ketqua',
+                        method: 'POST',
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#search_result').html(data);
                             $('#search_result').css('display', 'block');
-                        });
-                    }
-                });
-            } else {
-                $('#search_result').css('display', 'none');
-            }
+
+                            $("#live_search").focusout(function() {
+                                $('#search_result').css('display', 'none');
+                            });
+                            $("#live_search").focusin(function() {
+                                $('#search_result').css('display', 'block');
+                            });
+                        }
+                    });
+                } else {
+                    $('#search_result').css('display', 'none');
+                }
+            });
         });
-    });
     </script>
     <section class="shop spad" style="margin-top: -50px; margin-left: -30px;">
         <div class="container">
@@ -131,19 +127,71 @@
                                     $data = $getpr->Getpr();
                                     while ($row =  mysqli_fetch_array($data)) {
                                         echo "<option value='";
-                                        echo $row["TenLSP"]."/".$row["MaLSP"]."' name='TenLSP'>";
-                                        echo $row["TenLSP"]."</button></option>";
+                                        echo $row["TenLSP"] . "/" . $row["MaLSP"] . "' name='TenLSP'>";
+                                        echo $row["TenLSP"] . "</button></option>";
                                     }
                                     $ArrayMaLSP          = $_POST['MaLSP'];
-                                    $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
+                                    $ma = explode("/", filter_var(trim($ArrayMaLSP, "/")));
                                     $MaLSP          = $ma[1];
                                     $TenLSP         = $ma[0];
-                                ?>
+                                    ?>
                                 </select>
-                                <input type="text" id="search" name="search" placeholder="Search">
-                                <div id="search_result"></div>
-                                <button name="up" style="margin-top: 0px;" type="submit"><i
-                                        class="fa fa-search"></i></button>
+                                <style>
+                                    .dropbtn {
+                                        background-color: #fff;
+                                        color: white;
+                                        padding: 16px;
+                                        font-size: 16px;
+                                        border: none;
+                                    }
+
+                                    .dropup {
+                                        width: 300px;
+                                        height: 44px;
+                                        position: relative;
+                                        display: inline-block;
+                                    }
+
+                                    .dropup-content {
+                                        display: none;
+                                        position: absolute;
+                                        background-color: #fafafa;
+                                        min-width: 490px;
+                                        top: 45px;
+                                        right: -190px;
+                                        z-index: 1;
+                                        border-bottom-left-radius: 30px;
+                                        border-bottom-right-radius: 30px;
+                                    }
+
+                                    .dropup-content a {
+                                        color: black;
+                                        padding: 12px 16px;
+                                        text-decoration: none;
+                                        display: block;
+                                    }
+
+                                    .dropup-content a:hover {
+                                        background-color: #fafafa;
+                                        border-bottom-left-radius: 30px;
+                                        border-bottom-right-radius: 30px;
+                                    }
+
+                                    .dropup:hover .dropup-content {
+                                        display: block;
+                                    }
+
+                                    .dropup:hover .dropbtn {
+                                        background-color: #fff;
+                                    }
+                                </style>
+                                <div class="dropup">
+                                <input type="text" id="search" name="search" placeholder="Search" class="dropbtn">
+                                <div class="dropup-content" style="margin-left: 130px;">
+                                    <a id="search_result" href="#"></a>
+                                </div>
+                                </div>
+                                <button name="up" style="margin-top: 0px;" type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -151,43 +199,45 @@
             </div>
             <div class="row">
                 <?php
-                    $loadsp = $this->model("ProductModel");
-                    if(isset($_POST['up'])){
-                        if (isset($_POST["search"])) {
-                            $TenSP = $_POST['search'];
-                        }
-                        $data = $loadsp->SearchSP($TenSP);
-                    }elseif(isset($_POST['MaLSP'])){
-                        $ArrayMaLSP          = $_POST['MaLSP'];
-                        $ma = explode("/",filter_var(trim($ArrayMaLSP, "/")));
-                        $MaLSP          = $ma[1];
-                        $data =  $loadsp->Show($MaLSP);
-                    }else{
-                        $data = $loadsp->LoadSP();
+                $loadsp = $this->model("ProductModel");
+                if (isset($_POST['up'])) {
+                    if (isset($_POST["search"])) {
+                        $TenSP = $_POST['search'];
                     }
-                    while($row =  mysqli_fetch_array($data))
-                    {
-                        echo "<div class='col-lg-3 col-md-6 col-sm-6'>
+                    $data = $loadsp->SearchSP($TenSP);
+                } elseif (isset($_POST['MaLSP'])) {
+                    $ArrayMaLSP          = $_POST['MaLSP'];
+                    $ma = explode("/", filter_var(trim($ArrayMaLSP, "/")));
+                    $MaLSP          = $ma[1];
+                    $data =  $loadsp->Show($MaLSP);
+                } else {
+                    $data = $loadsp->LoadSP();
+                }
+                while ($row =  mysqli_fetch_array($data)) {
+                    echo "<div class='col-lg-3 col-md-6 col-sm-6'>
                         <div class='product__item'>
                             <div class='product__item__pic set-bg'>
-                                <a href = './shopdetail?id=";echo $row[0]."'><img src='../uploads/";
-                                echo $row["ImgBig"]."' style='width: 270px; height: 270px;'><a>
+                                <a href = './shopdetail?id=";
+                    echo $row[0] . "'><img src='../uploads/";
+                    echo $row["ImgBig"] . "' style='width: 270px; height: 270px;'><a>
                                 <div class='product__label'>
                                     <span>";
-                                echo $row["TenLSP"]."</span>
+                    echo $row["TenLSP"] . "</span>
                                 </div>
                             </div>
                             <div class='product__item__text'>
-                                <h6><a href='./shopdetail?id=";echo $row[0]."'>";
-                                echo $row["TenSP"]."</a></h6>
-                                <div class='product__item__price'>"; echo $row["Gia"]." VNĐ</div>
+                                <h6><a href='./shopdetail?id=";
+                    echo $row[0] . "'>";
+                    echo $row["TenSP"] . "</a></h6>
+                                <div class='product__item__price'>";
+                    echo $row["Gia"] . " VNĐ</div>
                                 <div class='cart_add'>
-                                    <a href='./cart?action=add&id=".$row[0]."&SoLuong=1'>Thêm Giỏ Hàng</a>
+                                    <a href='./cart?action=add&id=" . $row[0] . "&SoLuong=1'>Thêm Giỏ Hàng</a>
                                 </div>
                             </div>
                         </div>
                     </div>";
-                    }
+                }
                 ?>
             </div>
             <div class="shop__last__option">
@@ -217,8 +267,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="../public/img/img_logo/logo1.png" style="height: 150px; width: 150px;"
-                                    alt=""></a>
+                            <a href="#"><img src="../public/img/img_logo/logo1.png" style="height: 150px; width: 150px;" alt=""></a>
                         </div>
                         <p>Chúng tôi cung cấp cho bạn với ngon thức ăn nhanh với công thức nấu ăn của riêng chúng tôi,
                             giúp bạn thưởng thức những món ăn ngon nhất.</p>
@@ -250,11 +299,10 @@
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
                             <script>
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script>
                             All rights reserved | This template is made with
-                            <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                target="_blank">Colorlib & FF.TL</a>
+                            <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib & FF.TL</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
