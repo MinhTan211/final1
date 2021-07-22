@@ -42,5 +42,8 @@ class Home extends Controller{
     function cart(){
         $this->view("cart");
     }
+    function bill(){
+        $this->view("bill");
+    }
 }
 ?>

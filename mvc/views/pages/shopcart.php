@@ -1,3 +1,15 @@
+<?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+    else{
+        if(!isset($_SESSION["Role"]))
+            echo "<script type='text/javascript'>
+                window.location = 'http://localhost/Final/Home/Login'
+            </script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -45,6 +57,13 @@
             var agree = confirm("Xóa sản phẩm khỏi giỏ hàng?");
             if(agree)
                 location.href = 'cart?action=remove&id='+id;
+            else
+                return agree;
+        }
+        function ThanhToan(gia){
+            var agree = confirm("Tổng đơn hàng: "+gia+" bạn có muốn thanh toán");
+            if(agree)
+                location.href = 'Bill?Tong='+gia;
             else
                 return agree;
         }
@@ -125,7 +144,7 @@
                                                 </td>
                                                 <td class='cart__price'>"; echo $row[9]*$_SESSION['cart'][$id]['SoLuong']."</td>
                                                 <td class='cart__close'><button style ='margin-right: -100px; margin-bottom: 30px' onclick='return Remove(".$id.")'><span class='material-icons'>delete</span></button>
-                                               <button style ='margin-right: -100px; padding-left: 60px'><span <span class='material-icons'>update</span>></span></button></td>
+                                                <a href='cart?action=edit&id=".$id."&SoLuong=' style='margin-right: -100px; padding-left: 60px'><span <span class='material-icons'>update</span></span></a></td>
                                             </tr>";
                                         }
                                     }
@@ -150,17 +169,12 @@
                 <!-- Check Out-->
 
                 <div class="col-lg-4">
-                <form method="POST">
                     <div class="cart__total">
                         <h6 style="text-align: center; font-size: 25px;">Hóa Đơn</h6>
                         <ul>
                         <?php
-                        $customer = $this->model('CustomerModel')->ChitietKH($_SESSION["Username"])->fetch_row();
-                        if(isset($_POST["Tong"])){
-                            echo $customer[0];
-                        }
+                        $model = $this->model('ProductModel');        
                         echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
-                            $model = $this->model('ProductModel');
                             if(!isset($_SESSION['cart']))
                                 echo '<tr><p>Không có sản phẩm trong giỏ hàng</p></tr>';
                             else{
@@ -174,12 +188,9 @@
                             echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
                             echo "<li>Tổng Hóa Đơn<span>";echo $Tong." VNĐ</span></li>";
                         ?>
-                        <input type="hidden" name="TongT" value="<?php echo $Tong;?>"/>
-                        <input type="hidden" name="SoLuongT" value="<?php echo count($_SESSION['cart']);?>"/>
                         </ul>
-                        <button name="ThanhToan" type ="submit" class="primary-btn">Thanh Toán</button>
+                        <button name="ThanhToan" onclick = "return ThanhToan(<?php echo $Tong;?>)" type ="submit" class="primary-btn">Thanh Toán</button>
                     </div>
-                </form>
                 </div>
             </div>
         </div>
