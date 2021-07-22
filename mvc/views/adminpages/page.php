@@ -20,8 +20,8 @@
         }
       }
       if($page<=1){
-        echo "<li class='page-item'><span class='page-link'>Đầu</span></li>";
-        echo "<li class='page-item'><span class='page-link'>Trước</span></li>";
+        echo "<li class='page-item'><span style = 'color: #733619' class='page-link'>Đầu</span></li>";
+        echo "<li class='page-item'><span style = 'color: #733619' class='page-link'>Trước</span></li>";
       }
       else
       {
@@ -45,8 +45,8 @@
       }
       else
       {
-        echo "<li class='page-item'><a class='page-link'".'href="./'.$PageName.'?page='.($page+1).'">Sau</a></li>';
-        echo "<li class='page-item'><a class='page-link'".'href="./'.$PageName.'?page='.$pages.'">Cuối</a></li>';
+        echo "<li class='page-item'><a style = 'color: #733619' class='page-link'".'href="./'.$PageName.'?page='.($page+1).'">Sau</a></li>';
+        echo "<li class='page-item'><a style = 'color: #733619' class='page-link'".'href="./'.$PageName.'?page='.$pages.'">Cuối</a></li>';
       }
     ?>
   </ul>

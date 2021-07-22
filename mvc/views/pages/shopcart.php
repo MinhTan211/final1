@@ -98,26 +98,26 @@
                                     else{
                                         foreach($_SESSION['cart'] as $id => $value){
                                             $row = $model->ChitietSP($id)->fetch_row();
+                                            echo "<tr>
+                                                <td class='product__cart__item>'
+                                                    <div class='product__cart__item__pic'>
+                                                        <img style='width: 80px; height: 80px;' src='../uploads/";echo $row[2]."' alt=''>
+                                                    </div>
+                                                    <div style ='margin-top: 10px' class='product__cart__item__text'>
+                                                        <h6>";echo $row[1]."</h6>
+                                                    </div>
+                                                </td>
+                                                <td class='quantity__item'>
+                                                    <div class='quantity'>
+                                                        <div class='pro-qty'>
+                                                            <input type='text' value='";echo $_SESSION['cart'][$id]['SoLuong']."'>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class='cart__price'>"; echo $row[9]*$_SESSION['cart'][$id]['SoLuong']."</td>
+                                                <td class='cart__close'><span class='icon_close'><a hfer ='#'></a></span></td>
+                                            </tr>";
                                         }
-                                    //     echo '<tr>
-                                    //     <td class="product__cart__item">
-                                    //         <div class="product__cart__item__pic">
-                                    //             <img style="width: 60px; height: 60px;" src="../public/img/img_introduce/BanhTrangTronv.jpg" alt="">
-                                    //         </div>
-                                    //         <div class="product__cart__item__text">
-                                    //             <h6>Bánh Tráng trộn</h6>
-                                    //         </div>
-                                    //     </td>
-                                    //     <td class="quantity__item">
-                                    //         <div class="quantity">
-                                    //             <div class="pro-qty">
-                                    //                 <input type="text" value="1">
-                                    //             </div>
-                                    //         </div>
-                                    //     </td>
-                                    //     <td class="cart__price">$ 30.00</td>
-                                    //     <td class="cart__close"><span class="icon_close"></span></td>
-                                    // </tr>';
                                     }
                                 ?>
                             </tbody>
@@ -126,7 +126,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
-                                <a href="#">Tiếp Tục Mua Sắm</a>
+                                <a href="./shop">Tiếp Tục Mua Sắm</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
@@ -136,22 +136,35 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Check Out-->
+
                 <div class="col-lg-4">
-                    <div class="cart__discount">
-                        <h6 style="text-align: center; font-size: 20px;">Mã Giảm Giá</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Mã code">
-                            <button type="submit">Sử Dụng</button>
-                        </form>
-                    </div>
+                <form action="" method="POST">
                     <div class="cart__total">
                         <h6 style="text-align: center; font-size: 25px;">Hóa Đơn</h6>
                         <ul>
-                            <li>Giá Được Giảm <span>$ 50</span></li>
-                            <li>Tổng Hóa Đơn <span>$ 169.00</span></li>
+                        <?php
+                        echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
+                            $model = $this->model('ProductModel');
+                            if(!isset($_SESSION['cart']))
+                                echo '<tr><p>Không có sản phẩm trong giỏ hàng</p></tr>';
+                            else{
+                                $Tong = 0;
+                                foreach($_SESSION['cart'] as $id => $value){
+                                    $row = $model->ChitietSP($id)->fetch_row();
+                                    echo "<li>";echo $row[1] ."<span>".$row[9]*$_SESSION['cart'][$id]['SoLuong']." VNĐ</span></li>";
+                                    $Tong += $row[9]*$_SESSION['cart'][$id++]['SoLuong'];
+                                }
+                            }
+                            echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
+                            echo "<li>Tổng Hóa Đơn<span>";echo $Tong." VNĐ</span></li>";
+                        ?>
+                            
                         </ul>
                         <a href="../html/checkout.html" class="primary-btn">Thanh Toán</a>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

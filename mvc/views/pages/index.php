@@ -204,32 +204,6 @@
                         <h2>Đặt Hàng Với FF.LT</h2>
                     </div>
                 </div>
-                <div class="categories__slider owl-carousel">
-                    <div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="material-icons-outlined" style="font-size: 70px; padding-top: 15px;">fastfood</span>
-                            <h5>Fast Food</h5>
-                        </div>
-                    </div>
-                    <div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="material-icons-outlined" style="font-size: 70px; padding-top: 15px;">bakery_dining</span>
-                            <h5>Europen Food</h5>
-                        </div>
-                    </div>
-                    <div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="material-icons-outlined" style="font-size: 70px; padding-top: 15px;">local_cafe</span>
-                            <h5>Drink Of LT</h5>
-                        </div>
-                    </div>
-                    <div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="material-icons-outlined" style="font-size: 70px; padding-top: 15px;">ramen_dining</span>
-                            <h5>VietNam Food</h5>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -274,7 +248,7 @@
                 <div class="row">
                     <div style="margin-left: -80px;" class="col-lg-6 col-md-6 col-sm-6">
                             <?php
-                                $PageName = 'shop';
+                                $PageName = 'index';
                                 include 'page.php';
                             ?>
                     </div>
