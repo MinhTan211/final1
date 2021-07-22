@@ -53,13 +53,8 @@ class ProductModel extends DataBase
         return mysqli_query($this->con,$qr);
     }
 
-    public function GetProduct1($page, $limit, $pages, $MaLSP){
-        $start = ($page - 1) * $limit;
-        if($page>$pages)
-            $page = $pages;
-        else if($page < 1)
-            $page = 1;
-        $qr = "SELECT * FROM product WHERE MaSP = '$MaLSP' ORDER BY MaSP LIMIT $start, $limit";
+    public function SearchSP($TenSP){
+        $qr = "SELECT * FROM product WHERE TenSP LIKE '%$TenSP%'";
         return mysqli_query($this->con,$qr);
     }
 }
