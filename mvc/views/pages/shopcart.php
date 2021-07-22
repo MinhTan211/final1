@@ -60,6 +60,13 @@
             else
                 return agree;
         }
+        function clear(){
+            var agree = confirm("Làm mới toàn bộ giỏ hàng?");
+            if(agree)
+                location.href = 'cart?action=delete";
+            else
+                return agree;
+        }
         function ThanhToan(gia){
             var agree = confirm("Tổng đơn hàng: "+gia+" bạn có muốn thanh toán");
             if(agree)
@@ -165,7 +172,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
-                                <a href=""><i class="fa fa-spinner"></i>Xóa Trắng Giỏ Hàng</a>
+                                <button type = "button" onclick="return clear()"><i class="fa fa-spinner"></i>Làm mới giỏ hàng</button>
                             </div>
                         </div>
                     </div>
