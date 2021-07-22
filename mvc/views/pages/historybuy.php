@@ -1,15 +1,3 @@
-<?php
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    }
-    else{
-        if(!isset($_SESSION["Role"]))
-            echo "<script type='text/javascript'>
-                window.location = 'http://localhost/Final/Home/Login'
-            </script>";
-    }
-?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -48,33 +36,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Two+Tone" rel="stylesheet">
-</head>
 
+    <script type="text/javascript">
+        function onFileSelected(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
 
-<body>
-    <script LANGUAGE="JavaScript">
-        function Remove(id){
-            var agree = confirm("Xóa sản phẩm khỏi giỏ hàng?");
-            if(agree)
-                location.href = 'cart?action=remove&id='+id;
-            else
-                return agree;
-        }
-        function clearcart(){
-            var agree = confirm("Làm mới toàn bộ giỏ hàng?");
-            if(agree)
-                location.href = 'cart?action=delete';
-            else
-                return agree;
-        }
-        function ThanhToan(gia){
-            var agree = confirm("Tổng đơn hàng: "+gia+" bạn có muốn thanh toán");
-            if(agree)
-                location.href = 'Bill?Tong='+gia;
-            else
-                return agree;
+            var imgtag = document.getElementById("ImgCus");
+            imgtag.title = selectedFile.name;
+
+            reader.onload = function(event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
         }
     </script>
+</head>
+
+<body>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -90,12 +70,14 @@
                             <li><a href="./trademark">Thương Hiệu</a></li>
                             <li><a href="./shop">Đặt Hàng</a></li>
                             <?php
-                                include 'ButtonLogout.php';
+                            include 'ButtonLogout.php';
                             ?>
-                            <li class="active">
+                            <li>
                                 <a href="./shopcart"><img src="../public/img/icon/bag.png" style="height: 25px;"> <span>0</span> Cart: <span>$0.00</span></a>
                             </li>
-                            <a href="./informationPersonal" style="padding-left: 20px;"><img src="../public/img/img_logo/logo1.png" style="height: 40px; width: 40px;"><label style="margin-left: 10px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: white;">TT.LT</label></a>
+                            <li class="active">
+                                <a href="./informationPersonal" style="padding-left: 20px;"><img src="../public/img/img_logo/logo1.png" style="height: 40px; width: 40px;"><label style="margin-left: 10px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: white;">TT.LT</label></a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -104,111 +86,94 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Shopping Cart Section Begin -->
-    <section class="shopping-cart spad">
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
         <div class="container">
-            <div class="row">
-                <form></form>
-                <div class="about__text">
-                    <div class="section-title">
-                        <span style="font-size: 50px;">GIỎ HÀNG CỦA BẠN</span>
-                        <span>-------------------------------------------------------------------------------------------------</span>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="shopping__cart__table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Sản Phẩm</th>
-                                    <th>Số Lượng</th>
-                                    <th>Giá</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    $model = $this->model('ProductModel');
-                                    if(!isset($_SESSION['cart']))
-                                        echo '<tr><p>Không có sản phẩm trong giỏ hàng</p></tr>';
-                                    else{
-                                        foreach($_SESSION['cart'] as $id => $value){
-                                            $row = $model->ChitietSP($id)->fetch_row();
-                                            echo "<tr>
-                                                <td class='product__cart__item>'
-                                                    <div class='product__cart__item__pic'>
-                                                        <img style='width: 80px; height: 80px;' src='../uploads/";echo $row[2]."' alt=''>
-                                                    </div>
-                                                    <div style ='margin-top: 10px' class='product__cart__item__text'>
-                                                        <h6>";echo $row[1]."</h6>
-                                                    </div>
-                                                </td>
-                                                <form action='cart' method ='GET'>
-                                                <td class='quantity__item'>
-                                                    <div class='quantity'>
-                                                        <div class='pro-qty'>
-                                                            <input type = 'hidden' name='action' value='edit'/>   
-                                                            <input type = 'hidden' name='id' value='".$id."'/> 
-                                                            <input name = 'SoLuong' type='text' value='";echo $_SESSION['cart'][$id]['SoLuong']."'>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                </form>
-                                                <td class='cart__price'>"; echo $row[9]*$_SESSION['cart'][$id]['SoLuong']."</td>
-                                                <td class='cart__close'><button style ='margin-right: -50px; margin-bottom: 30px' onclick='return Remove(".$id.")'><span class='material-icons'>delete</span></button>
-                                                <button type = 'submit' style='margin-right: -100px; padding-left: 40px'><span <span class='material-icons'>update</span></span></button></td>
-                                            </tr>";
-                                        }
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="checkout__form">
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <?php
+                    $customer = $this->model('CustomerModel')->ChitietKH($_SESSION["Username"])->fetch_row();
+                    ?>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="continue__btn">
-                                <a style="background-color: black; color: blanchedalmond;" href="./shop">Tiếp Tục Mua Sắm</a>
+                        <div class="about__text">
+                            <div class="section-title">
+                                <span>THÔNG TIN CÁ NHÂN</span>
+                                <span>-------------------------------------------------------------------------------------------------</span>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="continue__btn update__btn">
-                                <button style="background-color: black; margin-right: 35px; margin-top: -5px;" type = "button" onclick="return clearcart()"><i class="fa fa-spinner"></i>Làm mới giỏ hàng</button>
+                        <div class="col-lg-4 col-md-6" style="text-align: center;">
+                            <img style="width: 300px; height: 360px;" src="../uploads/<?php echo $customer[8] ?>">
+                            </br>
+                            <div style="margin-top: 20px; padding-left: 45px;">
+                                <a style="text-align: center; margin-right: 50px;"><?php echo $customer[1] ?><span class="material-icons" style="color: black; margin-left: 10px;">
+                                        edit
+                                    </span></a>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Check Out-->
-                <div class="col-lg-4">
-                <form>
-                    <div class="cart__total">
-                        <h6 style="text-align: center; font-size: 25px;">Hóa Đơn</h6>
-                        <ul>
-                        <?php
-                        $model = $this->model('ProductModel');        
-                        echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
-                            if(!isset($_SESSION['cart']))
-                                echo '<tr><p>Không có sản phẩm trong giỏ hàng</p></tr>';
-                            else{
-                                $Tong = 0;
-                                foreach($_SESSION['cart'] as $id => $value){
-                                    $row = $model->ChitietSP($id)->fetch_row();
-                                    echo "<li>";echo $row[1] ."<span>".$row[9]*$_SESSION['cart'][$id]['SoLuong']." VNĐ</span></li>";
-                                    $Tong += $row[9]*$_SESSION['cart'][$id++]['SoLuong'];
-                                }
-                                echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
-                                echo "<li>Tổng Hóa Đơn<span>";echo $Tong." VNĐ</span></li>";
-                            }                        
-                        ?>
-                        </ul>
+                            <div class="vertical-menu" style="margin-top: 30px; margin-left: 30px;">
+                                <a href="./informationPersonal" class="active">Cập Nhật Thông Tin</a>
+                            </div>
+                            <div class="vertical-menu" style="margin-top: 30px; margin-left: 30px;">
+                                <a href="./informationPersonal" class="active">Lịch Sử Mua Hàng</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="content">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card" style="border: 1px solid #f08632">
+                                                <div class="card-body" >
+                                                        <table class="shopping__cart__table">
+                                                            <thead class=" text-primary" style="font-family:'Courier New', Courier, monospace;">
+                                                                <th style="width: 200px; text-align: center; color: #f08632;">
+                                                                    Sản Phẩm
+                                                                </th>
+                                                                <th style="width: 230px; text-align: center; color: #f08632;">
+                                                                    Số Lượng
+                                                                </th>
+                                                                <th style="width: 230px; text-align: center; color: #f08632;">
+                                                                    Giá
+                                                                </th>
+                                                            </thead>
+                                                            <tbody>
+                                                    <tr>
+                                                        <td style="color: #f08632;" colspan="3">--------------------------------------------------------------------------------------------------------------</td>
+                                                    </tr>
+                                                    <tr style="height: 40px;">
+                                                        <td style='width: 200px;text-align: center;color: #59430b;'>22/7/2021</td>
+                                                         <td style='width: 230px;text-align: center; color: #59430b;'>3</td>
+                                                         <td style='width: 230px;text-align: center;color: #59430b;'>230000</td>
+                                                    </tr>
+                                                    <tr style="height: 40px;">
+                                                        <td style='width: 200px;text-align: center;color: #59430b;'>22/7/2021</td>
+                                                         <td style='width: 230px;text-align: center; color: #59430b;'>3</td>
+                                                         <td style='width: 230px;text-align: center;color: #59430b;'>230000</td>
+                                                    </tr>
+                                                    <tr style="height: 40px;">
+                                                        <td style='width: 200px;text-align: center;color: #59430b;'>22/7/2021</td>
+                                                         <td style='width: 230px;text-align: center; color: #59430b;'>3</td>
+                                                         <td style='width: 230px;text-align: center;color: #59430b;'>230000</td>
+                                                    </tr>
+                                                              
+                                                            </tbody>
+                                                        </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    </form>
-                    <button name="ThanhToan" style="width: 360px; background-color: black;" onclick = "return ThanhToan(<?php echo $Tong;?>)" type ="submit" class="primary-btn">Thanh Toán</button>
-                </div>
+
+                    <button class="btn3" style="margin-left: 580px; background: transparent; margin-top: 1000px;">
+                        <span class="btn-label">Lưu</span></button>
+                </form>
             </div>
         </div>
     </section>
-    <!-- Shopping Cart Section End -->
+    <!-- Checkout Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer set-bg" data-setbg="../public/img/footer-bg.jpg">
@@ -279,7 +244,6 @@
         </div>
     </footer>
     <!-- Footer Section End -->
-
 
     <!-- Search Begin -->
     <div class="search-model">

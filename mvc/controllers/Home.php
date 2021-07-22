@@ -20,6 +20,10 @@ class Home extends Controller{
         $this->view("informationPersonal");
     }
 
+    function Historybuy(){
+        $this->view("historybuy");
+    }
+
     function Shop(){
         $this->view("shop");
     }

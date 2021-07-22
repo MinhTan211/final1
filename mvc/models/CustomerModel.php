@@ -33,5 +33,10 @@ class CustomerModel extends DataBase{
         $qr = "SELECT * FROM informationcustomer WHERE Username = '$Username'";
         return mysqli_num_rows(mysqli_query($this->con,$qr));
     }
+
+    public function addinf($id, $TenKH, $Address, $Email, $Numberphone, $Gender, $Birthday, $ImgCus){
+        $qr = "UPDATE informationcustomer SET TenKH ='$TenKH', Address ='$Address', Email ='$Email', Numberphone='$Numberphone', Gender='$Gender',Birthday ='$Birthday', ImgCus ='$ImgCus' WHERE MaKH = '$id'";
+        return mysqli_query($this->con,$qr);
+    }
 }
 ?>

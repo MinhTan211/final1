@@ -146,7 +146,7 @@
                                     <input name = "SoLuong" type="text" value="1">
                                 </div>
                             </div>
-                            <button type = "submit" class="primary-btn">Thêm Vào Giỏ Hàng</button>
+                            <button style="margin-top: -30px; height: 80px; padding-top: 40px;" type = "submit" class="primary-btn">Thêm Vào Giỏ Hàng</button>
                         </form>
                         </div>
                     </div>
