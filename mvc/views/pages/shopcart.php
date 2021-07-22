@@ -41,11 +41,6 @@
 
 <body>
     <script LANGUAGE="JavaScript">
-        function ThanhToan() {
-            var agree = confirm("Tổng số tiền cần thanh toán: ");
-            return agree;
-            href ='cart?action=remove&id=".$id."'
-        }
         function Remove(id){
             var agree = confirm("Xóa sản phẩm khỏi giỏ hàng?");
             if(agree)
@@ -154,13 +149,14 @@
                 <!-- Check Out-->
 
                 <div class="col-lg-4">
-                <form method="POST" onsubmit="return ThanhToan()">
+                <form method="POST">
                     <div class="cart__total">
                         <h6 style="text-align: center; font-size: 25px;">Hóa Đơn</h6>
                         <ul>
                         <?php
+                        $customer = $this->model('CustomerModel')->ChitietKH($_SESSION["Username"])->fetch_row();
                         if(isset($_POST["Tong"])){
-                            echo $_POST["Tong"];
+                            echo $customer[0];
                         }
                         echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
                             $model = $this->model('ProductModel');
@@ -177,11 +173,12 @@
                             echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
                             echo "<li>Tổng Hóa Đơn<span>";echo $Tong." VNĐ</span></li>";
                         ?>
-                        <input type="text" name="Tong" value="<?php echo $Tong;?>">
+                        <input type="hidden" name="TongT" value="<?php echo $Tong;?>"/>
+                        <input type="hidden" name="SoLuongT" value="<?php echo count($_SESSION['cart']);?>"/>
                         </ul>
-                        <button name="ThanhToan" type ="button" class="primary-btn">Thanh Toán</button>
+                        <button name="ThanhToan" type ="submit" class="primary-btn">Thanh Toán</button>
                     </div>
-                    </form>
+                </form>
                 </div>
             </div>
         </div>
