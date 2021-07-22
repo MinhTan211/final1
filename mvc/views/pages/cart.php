@@ -22,12 +22,13 @@
     $getAdd = explode("=",filter_var(trim($_SERVER["REQUEST_URI"], "/")));
     $getAdd[1] = explode("&", $getAdd[1]);
     $getAdd[2] = explode("&", $getAdd[2]);
-    $getAdd[3] = explode("&", $getAdd[3]);
     $id = $getAdd[2][0];
-    if(empty($getAdd[3][0]))
+    if(empty($getAdd[3]))
         $SL = 1;
-    else
+    else{
+        $getAdd[3] = explode("&", $getAdd[3]);
         $SL = $getAdd[3][0];
+    }
     if($SL<0)
         $SL = 0;
     $action = $getAdd[1][0];

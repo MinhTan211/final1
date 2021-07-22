@@ -15,7 +15,8 @@ class ShopModel extends DataBase{
         return mysqli_query($this->con, "SELECT COUNT(*) FROM billdetail")->fetch_row();
     }
     public function AddBillDetail($MaHD, $Gia, $SoLuong){
-        
+        $qr = "INSERT INTO billdetail(MaHD, Price, Quantity) VALUES ('$MaHD', '$Gia', '$SoLuong')";
+        return mysqli_query($this->con,$qr);
     }
 }
 ?>

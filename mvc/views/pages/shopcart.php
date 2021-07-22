@@ -40,6 +40,20 @@
 
 
 <body>
+    <script LANGUAGE="JavaScript">
+        function ThanhToan() {
+            var agree = confirm("Tổng số tiền cần thanh toán: ");
+            return agree;
+            href ='cart?action=remove&id=".$id."'
+        }
+        function Remove(id){
+            var agree = confirm("Xóa sản phẩm khỏi giỏ hàng?");
+            if(agree)
+                location.href = 'cart?action=remove&id='+id;
+            else
+                return agree;
+        }
+    </script>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -115,7 +129,7 @@
                                                     </div>
                                                 </td>
                                                 <td class='cart__price'>"; echo $row[9]*$_SESSION['cart'][$id]['SoLuong']."</td>
-                                                <td class='cart__close'><span class='icon_close'><a hfer ='#'></a></span></td>
+                                                <td class='cart__close'><button onclick='return Remove(".$id.")'><span class='icon_close'></span></button></td>
                                             </tr>";
                                         }
                                     }
@@ -131,7 +145,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
-                                <a href="#"><i class="fa fa-spinner"></i>Cặp Nhật Giỏ Hàng</a>
+                                <a href=""><i class="fa fa-spinner"></i>Câp Nhật Giỏ Hàng</a>
                             </div>
                         </div>
                     </div>
@@ -140,11 +154,14 @@
                 <!-- Check Out-->
 
                 <div class="col-lg-4">
-                <form action="" method="POST">
+                <form method="POST" onsubmit="return ThanhToan()">
                     <div class="cart__total">
                         <h6 style="text-align: center; font-size: 25px;">Hóa Đơn</h6>
                         <ul>
                         <?php
+                        if(isset($_POST["Tong"])){
+                            echo $_POST["Tong"];
+                        }
                         echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
                             $model = $this->model('ProductModel');
                             if(!isset($_SESSION['cart']))
@@ -160,9 +177,9 @@
                             echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
                             echo "<li>Tổng Hóa Đơn<span>";echo $Tong." VNĐ</span></li>";
                         ?>
-                            
+                        <input type="text" name="Tong" value="<?php echo $Tong;?>">
                         </ul>
-                        <a href="../html/checkout.html" class="primary-btn">Thanh Toán</a>
+                        <button name="ThanhToan" type ="button" class="primary-btn">Thanh Toán</button>
                     </div>
                     </form>
                 </div>
