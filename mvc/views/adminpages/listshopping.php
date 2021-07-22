@@ -143,10 +143,10 @@ The above copyright notice and this permission notice shall be included in all c
                                                     echo $row["Bookingdate"] .
                                                         "</td>
                                                              <td style='width: 200px;text-align: center;'>";
-                                                    echo $row["Quantity"] .
+                                                    echo $row["Quatity"] .
                                                         "</td>
                                                              <td style='width: 200px;text-align: center;'>";
-                                                    echo $row["Price"] .
+                                                    echo $row["Summoney"] .
                                                         "</td>
                                                              <td style='text-align: center; width: 200px;'>
                                                              <a><button class='snip0059'><span class='material-icons' style='font-size: 15px;'>
