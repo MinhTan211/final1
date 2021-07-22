@@ -129,7 +129,8 @@
                                                     </div>
                                                 </td>
                                                 <td class='cart__price'>"; echo $row[9]*$_SESSION['cart'][$id]['SoLuong']."</td>
-                                                <td class='cart__close'><button onclick='return Remove(".$id.")'><span class='icon_close'></span></button></td>
+                                                <td class='cart__close'><button style ='margin-right: -100px; margin-bottom: 30px' onclick='return Remove(".$id.")'><span class='material-icons'>delete</span></button>
+                                               <button style ='margin-right: -100px; padding-left: 60px'><span <span class='material-icons'>update</span>></span></button></td>
                                             </tr>";
                                         }
                                     }
@@ -145,7 +146,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
-                                <a href=""><i class="fa fa-spinner"></i>Câp Nhật Giỏ Hàng</a>
+                                <a href=""><i class="fa fa-spinner"></i>Xóa Trắng Giỏ Hàng</a>
                             </div>
                         </div>
                     </div>
@@ -179,7 +180,7 @@
                         ?>
                         <input type="text" name="Tong" value="<?php echo $Tong;?>">
                         </ul>
-                        <button name="ThanhToan" type ="button" class="primary-btn">Thanh Toán</button>
+                        <button name="ThanhToan" type ="submit" class="primary-btn">Thanh Toán</button>
                     </div>
                     </form>
                 </div>
