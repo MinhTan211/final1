@@ -144,7 +144,7 @@
                                                 </td>
                                                 <td class='cart__price'>"; echo $row[9]*$_SESSION['cart'][$id]['SoLuong']."</td>
                                                 <td class='cart__close'><button style ='margin-right: -100px; margin-bottom: 30px' onclick='return Remove(".$id.")'><span class='material-icons'>delete</span></button>
-                                                <a href='cart?action=edit&id=".$id."&SoLuong=' style='margin-right: -100px; padding-left: 60px'><span <span class='material-icons'>update</span></span></a></td>
+                                                </td>
                                             </tr>";
                                         }
                                     }
@@ -184,9 +184,9 @@
                                     echo "<li>";echo $row[1] ."<span>".$row[9]*$_SESSION['cart'][$id]['SoLuong']." VNĐ</span></li>";
                                     $Tong += $row[9]*$_SESSION['cart'][$id++]['SoLuong'];
                                 }
-                            }
-                            echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
-                            echo "<li>Tổng Hóa Đơn<span>";echo $Tong." VNĐ</span></li>";
+                                echo "<li style ='text-align: center; margin-top: 10px; color: #914b19; font-size: 12px'>----------------------------------------------------------</li>";
+                                echo "<li>Tổng Hóa Đơn<span>";echo $Tong." VNĐ</span></li>";
+                            }                        
                         ?>
                         </ul>
                         <button name="ThanhToan" onclick = "return ThanhToan(<?php echo $Tong;?>)" type ="submit" class="primary-btn">Thanh Toán</button>
