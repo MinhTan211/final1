@@ -56,10 +56,8 @@
                             <li><a href="./shop">Đặt Hàng</a></li>
                             <?php
                                 include 'ButtonLogout.php';
+                                include 'ButtonCart.php';
                             ?>
-                            <li>
-                                <a href="./shopcart"><img src="../public/img/icon/bag.png" style="height: 25px;"> <span>0</span> Cart: <span>$0.00</span></a>
-                            </li>
                         </ul>
                     </nav>
                 </div>

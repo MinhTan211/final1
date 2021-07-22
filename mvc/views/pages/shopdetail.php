@@ -75,10 +75,8 @@
                             <li class="active"><a href="./shop">Đặt Hàng</a></li>
                             <?php
                                 include 'ButtonLogout.php';
+                                include 'ButtonCart.php';
                             ?>
-                            <li>
-                                <a href="./shopcart"><img src="../public/img/icon/bag.png" style="height: 25px;"> <span>0</span> Cart: <span>$0.00</span></a>
-                            </li>
                             <a href="./informationPersonal" style="padding-left: 20px;"><img src="../public/img/img_logo/logo1.png" style="height: 40px; width: 40px;"><label style="margin-left: 10px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: white;">TT.LT</label></a>
                         </ul>
                     </nav>
