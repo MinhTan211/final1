@@ -62,13 +62,13 @@ The above copyright notice and this permission notice shall be included in all c
                     <li class="nav-item ">
                         <a class="nav-link" href="./listproduct">
                             <i class="material-icons">fastfood</i>
-                            <p>Danh Sách Loại Sản Phẩm</p>
+                            <p>Danh Sách Sản Phẩm</p>
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="./listproducttype">
                             <i class="material-icons">tapas</i>
-                            <p>Danh Sách Sản Phẩm</p>
+                            <p>Danh Sách Loai Sản Phẩm</p>
                         </a>
                     </li>
                     <li class="nav-item active">
